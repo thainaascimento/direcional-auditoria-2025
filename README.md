@@ -57,4 +57,4 @@ A projeção de VLR de R$454.595, com intervalo ilustrativo de 95% entre R$0 e R
 
 ## Integridade e fonte do arquivo
 
-Os PDFs públicos consultados foram arquivados localmente apenas para suporte ao trabalho e estão excluídos do pacote Git por `.gitignore`; o usuário pode obtê-los nos links em `FONTES.md`. A base sintética comprimida tem aproximadamente 21 MB, está incluída no repositório e não excede o limite por arquivo do GitHub. O repositório GitHub [direcional-auditoria-2025](https://github.com/thainaascimento/direcional-auditoria-2025) é privado; o acesso segue as permissões da conta proprietária.
+Os PDFs públicos consultados foram arquivados localmente apenas para suporte ao trabalho e estão excluídos do pacote Git por `.gitignore`; o usuário pode obtê-los nos links em `FONTES.md`. A base sintética comprimida tem aproximadamente 21 MB, está incluída no repositório e não excede o limite por arquivo do GitHub.
