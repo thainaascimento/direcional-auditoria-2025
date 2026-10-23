@@ -1,0 +1,181 @@
+{
+  "synthetic_only": true,
+  "source_date": "2026-10-22",
+  "population_rows": 500000,
+  "unique_synthetic_item_ids": 500000,
+  "sum_book_value_brl": 6951508000.0,
+  "public_balance_inventory_brl": 6951508000,
+  "reconciliation_difference_brl": 0.0,
+  "public_balance_class_brl": {
+    "TERRENOS_A_INCORPORAR": 5678238000,
+    "IMOVEIS_EM_CONSTRUCAO": 1174207000,
+    "IMOVEIS_CONCLUIDOS": 99063000
+  },
+  "synthetic_class_brl": {
+    "TERRENOS_A_INCORPORAR": 5678238000.0,
+    "IMOVEIS_EM_CONSTRUCAO": 1174207000.0,
+    "IMOVEIS_CONCLUIDOS": 99063000.0
+  },
+  "class_record_counts": {
+    "TERRENOS_A_INCORPORAR": 420000,
+    "IMOVEIS_EM_CONSTRUCAO": 75000,
+    "IMOVEIS_CONCLUIDOS": 5000
+  },
+  "public_balance_current_brl": 2086835000,
+  "public_balance_noncurrent_brl": 4864673000,
+  "current_amount_synthetic_brl": 2086835000.0,
+  "noncurrent_amount_synthetic_brl": 4864673000.0,
+  "land_total_brl": 5678238000,
+  "land_current_derived_brl": 813565000,
+  "land_noncurrent_brl": 4864673000,
+  "land_share_of_inventory_pct": 81.6835426212557,
+  "land_share_of_total_assets_pct": 42.95306186592897,
+  "materiality": {
+    "overall_benchmark": "Ativo total consolidado em 31/12/2025",
+    "overall_percent": 0.0075,
+    "overall_brl": 99147262,
+    "performance_percent_of_overall": 0.7,
+    "performance_brl": 69403084,
+    "specific_benchmark": "Estoques consolidados, Nota 5, 2025",
+    "specific_percent": 0.005,
+    "specific_brl": 34757540,
+    "clearly_trivial_percent": 0.05,
+    "clearly_trivial_brl": 4957363,
+    "note": "Percentuais são premissas didáticas de julgamento, não parâmetros normativos nem materialidade estabelecida pelo auditor independente da companhia."
+  },
+  "sample_method": "Amostragem aleatória simples sem reposição de itens, algoritmo de reservatório, seed fixo; base integralmente sintética.",
+  "sample_size": 1000,
+  "sample_population_fraction_pct": 0.2,
+  "sample_seed": 20251232,
+  "sample_size_basis": {
+    "design": "SRS without replacement; illustrative proportion estimate for binary attributes",
+    "confidence": 0.95,
+    "z": 1.96,
+    "expected_proportion_conservative": 0.5,
+    "tolerable_precision_percentage_points": 5.0,
+    "initial_n0": 384.1599999999999,
+    "finite_population_corrected_n": 383.865835932608,
+    "minimum_rounded_up": 384,
+    "actual_n": 1000,
+    "coverage_multiple": 2.6041666666666665,
+    "limitation": "Tamanho ilustrativo em base sintética; não substitui desenho real, não assegura detecção de distorções monetárias e não permite extrapolação para a companhia."
+  },
+  "sample_detected_exception_counts": {
+    "TITLE_DOCUMENT_INCOMPLETE": 0,
+    "AREA_INVALID": 1,
+    "NRV_BELOW_BOOK": 1,
+    "CLASSIFICATION_MISMATCH": 1,
+    "VALUATION_STALE": 2
+  },
+  "targeted_top_value_size": 200,
+  "targeted_top_value_unique_count": 200,
+  "overlap_srs_and_targeted": 1,
+  "projected_synthetic_nrv_shortfall_brl": 454595.0,
+  "projected_synthetic_nrv_shortfall_ci95_brl": [
+    0,
+    1344710.6379669225
+  ],
+  "actual_injected_synthetic_nrv_shortfall_brl": 1191323.15,
+  "population_exception_results": {
+    "TITLE_DOCUMENT_INCOMPLETE": {
+      "injected": 200,
+      "detected": 200,
+      "missed": 0,
+      "unexpected": 0,
+      "exact_match": true,
+      "example_ids": [
+        "SYN-INV-0000163",
+        "SYN-INV-0007081",
+        "SYN-INV-0008095",
+        "SYN-INV-0010283",
+        "SYN-INV-0014959",
+        "SYN-INV-0026067",
+        "SYN-INV-0028698",
+        "SYN-INV-0031645",
+        "SYN-INV-0036501",
+        "SYN-INV-0038452"
+      ]
+    },
+    "AREA_INVALID": {
+      "injected": 150,
+      "detected": 150,
+      "missed": 0,
+      "unexpected": 0,
+      "exact_match": true,
+      "example_ids": [
+        "SYN-INV-0000965",
+        "SYN-INV-0009952",
+        "SYN-INV-0011861",
+        "SYN-INV-0025306",
+        "SYN-INV-0026519",
+        "SYN-INV-0030380",
+        "SYN-INV-0037125",
+        "SYN-INV-0037523",
+        "SYN-INV-0039808",
+        "SYN-INV-0041526"
+      ]
+    },
+    "NRV_BELOW_BOOK": {
+      "injected": 500,
+      "detected": 500,
+      "missed": 0,
+      "unexpected": 0,
+      "exact_match": true,
+      "example_ids": [
+        "SYN-INV-0001090",
+        "SYN-INV-0001709",
+        "SYN-INV-0001998",
+        "SYN-INV-0003609",
+        "SYN-INV-0004394",
+        "SYN-INV-0005900",
+        "SYN-INV-0006923",
+        "SYN-INV-0006973",
+        "SYN-INV-0008581",
+        "SYN-INV-0009501"
+      ]
+    },
+    "CLASSIFICATION_MISMATCH": {
+      "injected": 250,
+      "detected": 250,
+      "missed": 0,
+      "unexpected": 0,
+      "exact_match": true,
+      "example_ids": [
+        "SYN-INV-0002404",
+        "SYN-INV-0005136",
+        "SYN-INV-0005274",
+        "SYN-INV-0005577",
+        "SYN-INV-0005693",
+        "SYN-INV-0007312",
+        "SYN-INV-0007361",
+        "SYN-INV-0007790",
+        "SYN-INV-0008148",
+        "SYN-INV-0011427"
+      ]
+    },
+    "VALUATION_STALE": {
+      "injected": 300,
+      "detected": 300,
+      "missed": 0,
+      "unexpected": 0,
+      "exact_match": true,
+      "example_ids": [
+        "SYN-INV-0000642",
+        "SYN-INV-0001881",
+        "SYN-INV-0002111",
+        "SYN-INV-0009708",
+        "SYN-INV-0010568",
+        "SYN-INV-0011145",
+        "SYN-INV-0016227",
+        "SYN-INV-0018511",
+        "SYN-INV-0018611",
+        "SYN-INV-0022562"
+      ]
+    }
+  },
+  "sources": {
+    "cvm_dfp": "DFP Direcional Engenharia S.A., 31/12/2025, V1, CVM protocolo 021350DFP311220250100155189-71, consulta documental NSD 155189, acesso 22/10/2026; BP pp.16–17, Nota 5 p.69.",
+    "ri_dfp": "RI Direcional, DFP 4T25 V1, PDF direto: https://api.mziq.com/mzfilemanager/v2/d/ada9bc2c-f7d0-4359-9eaf-851b679ab788/184f5357-c3a8-12a9-3a85-cdb268303bcb?origin=2"
+  },
+  "scope_limit": "Nenhuma exceção da base é uma constatação da Direcional; todos os itens e exceções são sintéticos. A projeção não se aplica aos saldos reais."
+}

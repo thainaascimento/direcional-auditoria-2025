@@ -1,0 +1,21 @@
+variavel,tipo,descricao,dominio/unidade
+synthetic_item_id,string,Chave primária única de item/posição de custo inteiramente sintética.,SYN-INV-0000001…
+synthetic_contract_id,string,"Contrato aquisitivo fictício, exclusivo por linha para evitar repetição de registros.",SYN-CON-0000001…
+synthetic_project_id,string,Projeto fictício; repetição entre itens do mesmo projeto é legítima.,SYN-PRJ-0001…
+synthetic_registry_reference,string,Referência registral fictícia; não corresponde a matrícula real.,SYN-REG-0000001…
+inventory_class,enum,Classe conforme Nota 5; valores individuais e IDs são artificiais.,TERRENOS_A_INCORPORAR / IMOVEIS_EM_CONSTRUCAO / IMOVEIS_CONCLUIDOS
+item_type,enum,Natureza sintética do item individual da rubrica Estoques.,PARCELA_DE_TERRENO / UNIDADE_EM_CONSTRUCAO / UNIDADE_CONCLUIDA
+uf_code,string,UF atribuída artificialmente; não identifica localização real.,MG/SP/RJ/…
+municipality_code_synthetic,string,"Código municipal sintético, sem correspondência com município real.",SYN-MUN-0001…
+area_m2,integer,Área artificial em m²; anomalias de área zero foram implantadas.,0 ou inteiro positivo
+acquisition_date,ISO date,Data de aquisição inventada entre 2018 e 2024.,AAAA-MM-DD
+planned_realization_date,ISO date,Data fictícia para testar expectativa de realização e classificação.,AAAA-MM-DD
+classification_at_2025_12_31,enum,"Classificação corrente/não corrente sintética, sujeita a inconsistência plantada.",CIRCULANTE/NAO_CIRCULANTE
+title_status,enum,Evidência dominial fictícia para itens imobiliários.,DOCUMENTADO/PENDENTE
+title_registration_date,ISO date/text,Data fictícia; vazia em casos plantados como pendentes.,AAAA-MM-DD ou vazio
+valuation_date,ISO date,Data fictícia para teste de atualidade da mensuração.,AAAA-MM-DD
+historical_cost_cents_synthetic,integer cents,Custo alocado artificialmente; soma reconcilia por classe e total.,centavos de BRL
+book_value_cents_synthetic,integer cents,"Valor contábil sintético; soma exatamente R$6.951.508.000,00.",centavos de BRL
+estimated_nrv_cents_synthetic,integer cents,Estimativa sintética de VLR; há exceções de teste implantadas.,centavos de BRL
+injected_exception_code,enum/text,Exceção implantada pelo gerador; vazio se não plantada.,; ou vazio
+synthetic_record,string,Rótulo explícito de artificialidade em todas as linhas.,YES — DADOS SINTÉTICOS

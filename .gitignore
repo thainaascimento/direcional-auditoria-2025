@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+source/*.pdf
+source/*.txt
+reports/typst/*.typst-diagnostics.log
+reports/typst/*.pdf
+reports/typst/*-review/
+reports/typst/verify.json
