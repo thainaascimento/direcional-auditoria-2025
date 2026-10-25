@@ -1,4 +1,6 @@
-# Dossiê didático de auditoria — Direcional Engenharia S.A. — 2025
+# Dossiê didático de auditoria — Direcional Engenharia S.A. — 2025 - PROVA 2
+
+**Disciplina:** Auditoria 1
 
 **Matrícula:** 242011273 
 
