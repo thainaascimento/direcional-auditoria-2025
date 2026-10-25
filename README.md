@@ -1,8 +1,9 @@
 # Dossiê didático de auditoria — Direcional Engenharia S.A. — 2025
 
-
 **Matrícula:** 242011273 
+
 **Aluno(a):** Thainá Cristine Martins do Nascimento
+
 **Data de Consulta das fontes:** 22/10/2026 
 
 ## Natureza e limites
