@@ -1,0 +1,4 @@
+sample_size,sample_nrv_shortfall_brl,projected_synthetic_shortfall_brl,approx_ci95_lower_brl,approx_ci95_upper_brl,ci95_half_width_brl,upper_ci_pct_of_didactic_specific_materiality
+1000,3528.31,1764155.0,0,4264320.56,2500165.56,12.269
+3000,5453.0,908833.33,0,1950286.45,1041453.12,5.611
+10000,29749.1,1487455.0,537425.96,2437484.04,950029.04,7.013

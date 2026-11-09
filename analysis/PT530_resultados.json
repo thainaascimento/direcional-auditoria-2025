@@ -43,38 +43,138 @@
     "clearly_trivial_brl": 4957363,
     "note": "Percentuais são premissas didáticas de julgamento, não parâmetros normativos nem materialidade estabelecida pelo auditor independente da companhia."
   },
-  "sample_method": "Amostragem aleatória simples sem reposição de itens, algoritmo de reservatório, seed fixo; base integralmente sintética.",
-  "sample_size": 1000,
-  "sample_population_fraction_pct": 0.2,
+  "sample_method": "Amostragem aleatória simples sem reposição por sorteio de posições da população finita, seed fixo; base integralmente sintética.",
+  "sample_size": 10000,
+  "sample_population_fraction_pct": 2.0,
   "sample_seed": 20251232,
   "sample_size_basis": {
-    "design": "SRS without replacement; illustrative proportion estimate for binary attributes",
-    "confidence": 0.95,
-    "z": 1.96,
-    "expected_proportion_conservative": 0.5,
-    "tolerable_precision_percentage_points": 5.0,
-    "initial_n0": 384.1599999999999,
-    "finite_population_corrected_n": 383.865835932608,
-    "minimum_rounded_up": 384,
-    "actual_n": 1000,
-    "coverage_multiple": 2.6041666666666665,
-    "limitation": "Tamanho ilustrativo em base sintética; não substitui desenho real, não assegura detecção de distorções monetárias e não permite extrapolação para a companhia."
+    "design": "SRS without replacement sized for at-least-one-exception detection in a synthetic sensitivity case",
+    "target_exception_count": 150,
+    "target_exception_rate_pct": 0.03,
+    "target_detection_probability": 0.95,
+    "minimum_n_exact_hypergeometric": 9886,
+    "selected_n_rounded_up": 10000,
+    "probability_at_original_n_1000_pct": 25.943746498172395,
+    "probability_at_selected_n_pct": 95.17260070677064,
+    "attribute_precision_sensitivity": [
+      {
+        "sample_size": 384,
+        "margin_95_pct_points": 4.999125788493821
+      },
+      {
+        "sample_size": 1000,
+        "margin_95_pct_points": 3.0959346197267053
+      },
+      {
+        "sample_size": 10000,
+        "margin_95_pct_points": 0.9701514739399022
+      }
+    ],
+    "original_attribute_basis": {
+      "confidence": 0.95,
+      "z": 1.96,
+      "p": 0.5,
+      "precision_percentage_points": 5.0,
+      "minimum_n": 384
+    },
+    "limitation": "The 0.03% benchmark is the rarest planted exception rate in this synthetic dataset, not an expected error rate for Direcional. Detection of at least one item does not demonstrate monetary adequacy or support extrapolation to the Company."
   },
+  "detection_sensitivity": [
+    {
+      "hypothetical_exception_count": 150,
+      "hypothetical_exception_rate_pct": 0.03,
+      "probability_detect_at_original_n_1000_pct": 25.943746498172395,
+      "probability_detect_at_current_n_pct": 95.17260070677064,
+      "minimum_n_for_95pct_detection": 9886
+    },
+    {
+      "hypothetical_exception_count": 200,
+      "hypothetical_exception_rate_pct": 0.04,
+      "probability_detect_at_original_n_1000_pct": 33.00018413585919,
+      "probability_detect_at_current_n_pct": 98.24263371508133,
+      "minimum_n_for_95pct_detection": 7433
+    },
+    {
+      "hypothetical_exception_count": 250,
+      "hypothetical_exception_rate_pct": 0.05,
+      "probability_detect_at_original_n_1000_pct": 39.384858156786464,
+      "probability_detect_at_current_n_pct": 99.36031376371734,
+      "minimum_n_for_95pct_detection": 5955
+    },
+    {
+      "hypothetical_exception_count": 500,
+      "hypothetical_exception_rate_pct": 0.1,
+      "probability_detect_at_original_n_1000_pct": 63.26725773735412,
+      "probability_detect_at_current_n_pct": 99.99591845113108,
+      "minimum_n_for_95pct_detection": 2986
+    },
+    {
+      "hypothetical_exception_count": 1250,
+      "hypothetical_exception_rate_pct": 0.25,
+      "probability_detect_at_original_n_1000_pct": 91.83764392003386,
+      "probability_detect_at_current_n_pct": 99.99999999895593,
+      "minimum_n_for_95pct_detection": 1196
+    },
+    {
+      "hypothetical_exception_count": 2500,
+      "hypothetical_exception_rate_pct": 0.5,
+      "probability_detect_at_original_n_1000_pct": 99.33793957785346,
+      "probability_detect_at_current_n_pct": 100.0,
+      "minimum_n_for_95pct_detection": 598
+    },
+    {
+      "hypothetical_exception_count": 5000,
+      "hypothetical_exception_rate_pct": 1.0,
+      "probability_detect_at_original_n_1000_pct": 99.99572627776104,
+      "probability_detect_at_current_n_pct": 100.0,
+      "minimum_n_for_95pct_detection": 298
+    }
+  ],
+  "monetary_sensitivity": [
+    {
+      "sample_size": 1000,
+      "sample_nrv_shortfall_brl": 3528.31,
+      "projected_synthetic_shortfall_brl": 1764155.0,
+      "approx_ci95_lower_brl": 0,
+      "approx_ci95_upper_brl": 4264320.56,
+      "ci95_half_width_brl": 2500165.56,
+      "upper_ci_pct_of_didactic_specific_materiality": 12.269
+    },
+    {
+      "sample_size": 3000,
+      "sample_nrv_shortfall_brl": 5453.0,
+      "projected_synthetic_shortfall_brl": 908833.33,
+      "approx_ci95_lower_brl": 0,
+      "approx_ci95_upper_brl": 1950286.45,
+      "ci95_half_width_brl": 1041453.12,
+      "upper_ci_pct_of_didactic_specific_materiality": 5.611
+    },
+    {
+      "sample_size": 10000,
+      "sample_nrv_shortfall_brl": 29749.1,
+      "projected_synthetic_shortfall_brl": 1487455.0,
+      "approx_ci95_lower_brl": 537425.96,
+      "approx_ci95_upper_brl": 2437484.04,
+      "ci95_half_width_brl": 950029.04,
+      "upper_ci_pct_of_didactic_specific_materiality": 7.013
+    }
+  ],
   "sample_detected_exception_counts": {
-    "TITLE_DOCUMENT_INCOMPLETE": 0,
-    "AREA_INVALID": 1,
-    "NRV_BELOW_BOOK": 1,
-    "CLASSIFICATION_MISMATCH": 1,
-    "VALUATION_STALE": 2
+    "TITLE_DOCUMENT_INCOMPLETE": 3,
+    "AREA_INVALID": 0,
+    "NRV_BELOW_BOOK": 15,
+    "CLASSIFICATION_MISMATCH": 4,
+    "VALUATION_STALE": 8
   },
   "targeted_top_value_size": 200,
   "targeted_top_value_unique_count": 200,
-  "overlap_srs_and_targeted": 1,
-  "projected_synthetic_nrv_shortfall_brl": 454595.0,
+  "overlap_srs_and_targeted": 4,
+  "projected_synthetic_nrv_shortfall_brl": 1487455.0,
   "projected_synthetic_nrv_shortfall_ci95_brl": [
-    0,
-    1344710.6379669225
+    537425.9601981004,
+    2437484.0398018993
   ],
+  "projected_synthetic_nrv_shortfall_ci95_method": "Normal approximation from SRS sample standard deviation with finite population correction; exploratory only, not a monetary audit-sampling design.",
   "actual_injected_synthetic_nrv_shortfall_brl": 1191323.15,
   "population_exception_results": {
     "TITLE_DOCUMENT_INCOMPLETE": {

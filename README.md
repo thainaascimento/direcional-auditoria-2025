@@ -22,13 +22,13 @@ A DFP de 2025 informa Estoques de R$6.951.508 mil, a maior rubrica individual do
 - `Dossie_Auditoria_Direcional_2025.md` — fonte editável do relatório consolidado.
 - `MATRIZ_NORMAS.md` — cobertura da Estrutura Conceitual e das NBC TAs do roteiro.
 - `workpapers/INDEX.md` e `workpapers/` — índice e 27 papéis de trabalho individuais, PT EC e PTs 200 a 600 do roteiro.
-- `analysis/papel_amostragem_conciliacao.xlsx` — arquivo editável com materialidade, saldos, reconciliação, cálculo da amostra, testes, fontes, dicionário e amostra aleatória.
+- `analysis/papel_amostragem_conciliacao.xlsx` — arquivo editável com materialidade, saldos, reconciliação, dimensionamento, sensibilidades de detecção e monetária, testes, fontes, dicionário e amostra aleatória.
 - `analysis/analises_e_programas.xlsx` — análises, matriz de riscos, programas por ciclo e mapa de distorções simuladas.
 - `data/estoques_sinteticos.csv.gz` — população sintética integral da rubrica Estoques (500.000 linhas, CSV comprimido), com itens de terrenos, obras em andamento e imóveis concluídos.
-- `analysis/amostra_aleatoria_1000.csv` e `analysis/amostra_direcionada_top200.csv` — seleções reproduzíveis, respectivamente SRS sem reposição e seleção direcionada dos 200 maiores valores.
-- `analysis/excecoes_detectadas_sinteticas.csv`, `analysis/PT530_resultados.json` e `data/injection_register.json` — resultados dos testes e registro das exceções intencionalmente implantadas.
+- `analysis/amostra_aleatoria_10000.csv` e `analysis/amostra_direcionada_top200.csv` — seleções reproduzíveis, respectivamente SRS sem reposição de 10.000 itens e seleção dirigida dos 200 maiores valores.
+- `analysis/excecoes_detectadas_sinteticas.csv`, `analysis/sensibilidade_deteccao.csv`, `analysis/sensibilidade_monetaria.csv`, `analysis/PT530_resultados.json` e `data/injection_register.json` — resultados dos testes e das sensibilidades, além do registro das exceções intencionalmente implantadas.
 - `analysis/dicionario_variaveis.csv` — dicionário da base.
-- `scripts/generate_synthetic_inventory.py` e `scripts/analyze_synthetic_inventory.py` — código que gera a população integral de Estoques e reproduz amostra, exceções, conciliações e planilha PT530.
+- `scripts/generate_synthetic_inventory.py`, `scripts/analyze_synthetic_inventory.py` e `scripts/test_sampling_sensitivity.py` — código para gerar a população integral, reproduzir amostra, exceções, conciliações e sensibilidades, além de testar automaticamente o dimensionamento do PT-530.
 - `scripts/build_audit_support.py` — código da planilha editável de análises e programas.
 - `scripts/assemble_dossier.py` — consolida o relatório, a matriz normativa, as fontes e os papéis em Markdown.
 - `scripts/validate_workpapers.py` — verifica a completude formal dos 27 papéis e sinaliza dados públicos preliminares a revisar.
@@ -47,9 +47,10 @@ python3 scripts/generate_synthetic_inventory.py \
 python3 scripts/analyze_synthetic_inventory.py \
   --input data/estoques_sinteticos.csv.gz \
   --outdir analysis \
-  --sample-size 1000 \
+  --sample-size 10000 \
   --seed 20251232
 
+python3 -m unittest discover -s scripts -p 'test_*.py'
 python3 scripts/fix_dfp_page_refs.py
 python3 scripts/validate_workpapers.py
 python3 scripts/build_audit_support.py
@@ -57,9 +58,9 @@ python3 scripts/assemble_dossier.py
 typst compile reports/typst/main.typ Dossie_Auditoria_Direcional_2025.pdf
 ```
 
-Os testes em 100% da população sintética encontraram exatamente as cinco classes implantadas: 200 pendências documentais, 150 áreas inválidas, 500 sinais sintéticos de valor realizável líquido abaixo do valor contábil, 250 divergências de classificação e 300 avaliações antigas. Não houve falso positivo nem falso negativo **na população artificial conhecida**. A amostra SRS de 1.000 itens encontrou cinco exceções (uma de área, uma de VLR, uma de classificação e duas de avaliação antiga), sem pendência documental; isso ilustra risco amostral, não uma constatação sobre a Direcional.
+Os testes em 100% da população sintética encontraram exatamente as cinco classes implantadas: 200 pendências documentais, 150 áreas inválidas, 500 sinais sintéticos de valor realizável líquido abaixo do valor contábil, 250 divergências de classificação e 300 avaliações antigas. Não houve falso positivo nem falso negativo **na população artificial conhecida**. Após a revisão do dimensionamento, a SRS foi ampliada para 10.000 itens. O tamanho foi escolhido para ter 95,17% de probabilidade hipergeométrica de selecionar ao menos um item se a taxa hipotética for 0,03%, igual à menor frequência artificial (150/500.000); para n=1.000, a probabilidade seria 25,94%. Essa taxa é uma sensibilidade sintética, não uma estimativa da Direcional. Com a semente publicada, a nova amostra encontrou três pendências documentais, zero áreas inválidas, 15 sinais de VLR, quatro classificações divergentes e oito avaliações antigas. A ausência dos casos de área é o risco residual esperado em cerca de 4,83% das amostras de n=10.000; não é evidência de ausência de erro real.
 
-A projeção de VLR de R$454.595, com intervalo ilustrativo de 95% entre R$0 e R$1.344.711, é calculada somente sobre a população sintética. O shortfall implantado conhecido na base é R$1.191.323,15. Nenhum desses números deve ser atribuído à companhia ou projetado para seus saldos reais.
+A sensibilidade monetária aninhada mostra projeção sintética de VLR de R$1.764.155 para n=1.000, R$908.833 para n=3.000 e R$1.487.455 para n=10.000; no último caso, o intervalo normal aproximado com correção finita é R$537.426 a R$2.437.484. O shortfall implantado conhecido na população é R$1.191.323,15. Como a distribuição é esparsa e artificial, esses cálculos são exploratórios, não dimensionam uma amostra monetária de auditoria e não devem ser atribuídos à companhia nem projetados aos saldos reais.
 
 ## Integridade e fonte do arquivo
 

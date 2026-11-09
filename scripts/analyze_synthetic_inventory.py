@@ -97,12 +97,46 @@ def style_sheet(ws):
         for c in row: c.alignment = Alignment(vertical="top", wrap_text=True)
 
 
-def analyze(dataset: Path, outdir: Path, sample_size: int = 1000, seed: int = 20251232):
+def hypergeometric_detection_probability(population_size: int, exception_count: int, sample_size: int) -> float:
+    """Exact probability of selecting at least one exception under SRS without replacement."""
+    if exception_count <= 0 or sample_size <= 0:
+        return 0.0
+    if exception_count > population_size or sample_size > population_size - exception_count:
+        return 1.0
+    log_probability_of_zero = sum(
+        math.log1p(-exception_count / (population_size - i))
+        for i in range(sample_size)
+    )
+    return -math.expm1(log_probability_of_zero)
+
+
+def minimum_n_for_detection(population_size: int, exception_count: int, target_probability: float) -> int:
+    """Smallest SRS-without-replacement size meeting a target probability of at least one hit."""
+    low, high = 1, population_size
+    while low < high:
+        middle = (low + high) // 2
+        if hypergeometric_detection_probability(population_size, exception_count, middle) >= target_probability:
+            high = middle
+        else:
+            low = middle + 1
+    return low
+
+
+def attribute_margin(population_size: int, sample_size: int, proportion: float = 0.5, z: float = 1.96) -> float:
+    """Approximate 95% margin of error for a proportion with finite-population correction."""
+    if sample_size <= 0 or sample_size > population_size:
+        return 0.0
+    return z * math.sqrt(proportion * (1 - proportion) / sample_size * (population_size - sample_size) / (population_size - 1))
+
+
+def analyze(dataset: Path, outdir: Path, sample_size: int = 10_000, seed: int = 20251232):
     if not 1 <= sample_size <= 500_000:
         raise ValueError("sample-size must be between 1 and 500000")
     outdir.mkdir(parents=True, exist_ok=True)
     sample_rng = random.Random(seed)
-    sample: list[dict[str, str]] = []
+    sample_positions = sample_rng.sample(range(500_000), sample_size)
+    sample_rank_by_position = {position: rank for rank, position in enumerate(sample_positions)}
+    sample_by_rank: list[dict[str, str] | None] = [None] * sample_size
     top_heap: list[tuple[int, str, dict[str, str]]] = []
     n = total_cents = total_cost_cents = current_cents = noncurrent_cents = 0
     class_cents = {k: 0 for k in CLASS_BALANCES}
@@ -135,10 +169,9 @@ def analyze(dataset: Path, outdir: Path, sample_size: int = 1000, seed: int = 20
             if flags:
                 detected = dict(row); detected["detected_exception_codes"] = ";".join(flags)
                 detected_rows.append(detected)
-            if len(sample) < sample_size: sample.append(row.copy())
-            else:
-                j = sample_rng.randrange(n)
-                if j < sample_size: sample[j] = row.copy()
+            selected_rank = sample_rank_by_position.get(n - 1)
+            if selected_rank is not None:
+                sample_by_rank[selected_rank] = row.copy()
             key = (book, item_id, row.copy())
             if len(top_heap) < 200: heapq.heappush(top_heap, key)
             elif book > top_heap[0][0]: heapq.heapreplace(top_heap, key)
@@ -154,11 +187,14 @@ def analyze(dataset: Path, outdir: Path, sample_size: int = 1000, seed: int = 20
     if current_cents != INVENTORY_CURRENT * 100 or noncurrent_cents != INVENTORY_NONCURRENT * 100:
         raise ValueError("Current/noncurrent synthetic totals do not reconcile to public balances.")
 
+    if any(row is None for row in sample_by_rank):
+        raise ValueError("One or more randomly selected population positions were not found.")
+    sample = [row for row in sample_by_rank if row is not None]
     for row in sample:
         shortfall = max(0, int(row["book_value_cents_synthetic"]) - int(row["estimated_nrv_cents_synthetic"])) / 100
         sample_nrv_shortfalls_brl.append(shortfall)
         row["detected_exception_codes"] = ";".join(detected_rules(row))
-        row["sample_method"] = f"SRS sem reposição; seed {seed}"
+        row["sample_method"] = f"SRS sem reposição; posições aleatórias; seed {seed}"
     sample_shortfall_sum = sum(sample_nrv_shortfalls_brl)
     projected_shortfall = sample_shortfall_sum * n / len(sample)
     z_95, expected_attribute_rate, tolerable_precision = 1.96, 0.50, 0.05
@@ -170,6 +206,47 @@ def analyze(dataset: Path, outdir: Path, sample_size: int = 1000, seed: int = 20
         se = sd / math.sqrt(len(sample)) * math.sqrt((n - len(sample)) / (n - 1))
         margin = 1.96 * se * n
     else: margin = 0.0
+
+    target_exception_count = min(len(ids) for ids in injected_ids.values())
+    target_exception_rate = target_exception_count / n
+    target_detection_probability = 0.95
+    required_detection_n = minimum_n_for_detection(n, target_exception_count, target_detection_probability)
+    sensitivity_counts = sorted({target_exception_count, 200, 250, 500, 1_250, 2_500, 5_000})
+    detection_sensitivity = []
+    for count in sensitivity_counts:
+        detection_sensitivity.append({
+            "hypothetical_exception_count": count,
+            "hypothetical_exception_rate_pct": count / n * 100,
+            "probability_detect_at_original_n_1000_pct": hypergeometric_detection_probability(n, count, 1_000) * 100,
+            "probability_detect_at_current_n_pct": hypergeometric_detection_probability(n, count, sample_size) * 100,
+            "minimum_n_for_95pct_detection": minimum_n_for_detection(n, count, 0.95),
+        })
+
+    attribute_precision_sensitivity = [
+        {"sample_size": size, "margin_95_pct_points": attribute_margin(n, size) * 100}
+        for size in sorted({n_required_attribute_ceiling, 1_000, sample_size})
+    ]
+
+    monetary_sensitivity = []
+    specific_materiality_brl = round(INVENTORY_TOTAL * 0.005)
+    for size in sorted({1_000, 3_000, sample_size}):
+        if size < 2 or size > len(sample_nrv_shortfalls_brl):
+            continue
+        values = sample_nrv_shortfalls_brl[:size]
+        estimate = sum(values) * n / size
+        sample_sd = statistics.stdev(values)
+        standard_error_total = sample_sd / math.sqrt(size) * math.sqrt((n - size) / (n - 1)) * n
+        half_width = z_95 * standard_error_total
+        upper = estimate + half_width
+        monetary_sensitivity.append({
+            "sample_size": size,
+            "sample_nrv_shortfall_brl": round(sum(values), 2),
+            "projected_synthetic_shortfall_brl": round(estimate, 2),
+            "approx_ci95_lower_brl": round(max(0, estimate - half_width), 2),
+            "approx_ci95_upper_brl": round(upper, 2),
+            "ci95_half_width_brl": round(half_width, 2),
+            "upper_ci_pct_of_didactic_specific_materiality": round(upper / specific_materiality_brl * 100, 3),
+        })
 
     top_rows = [x[2] for x in sorted(top_heap, reverse=True)]
     targeted_ids = {r["synthetic_item_id"] for r in top_rows}
@@ -204,22 +281,29 @@ def analyze(dataset: Path, outdir: Path, sample_size: int = 1000, seed: int = 20
         "land_total_brl": LAND_TOTAL, "land_current_derived_brl": LAND_CURRENT,
         "land_noncurrent_brl": LAND_NONCURRENT, "land_share_of_inventory_pct": LAND_TOTAL / INVENTORY_TOTAL * 100,
         "land_share_of_total_assets_pct": LAND_TOTAL / N_ASSETS * 100, "materiality": materiality,
-        "sample_method": "Amostragem aleatória simples sem reposição de itens, algoritmo de reservatório, seed fixo; base integralmente sintética.",
+        "sample_method": "Amostragem aleatória simples sem reposição por sorteio de posições da população finita, seed fixo; base integralmente sintética.",
         "sample_size": len(sample), "sample_population_fraction_pct": len(sample) / n * 100, "sample_seed": seed,
         "sample_size_basis": {
-            "design": "SRS without replacement; illustrative proportion estimate for binary attributes",
-            "confidence": 0.95, "z": z_95, "expected_proportion_conservative": expected_attribute_rate,
-            "tolerable_precision_percentage_points": tolerable_precision * 100,
-            "initial_n0": n0_attribute, "finite_population_corrected_n": n_required_attribute,
-            "minimum_rounded_up": n_required_attribute_ceiling, "actual_n": len(sample),
-            "coverage_multiple": len(sample) / n_required_attribute_ceiling,
-            "limitation": "Tamanho ilustrativo em base sintética; não substitui desenho real, não assegura detecção de distorções monetárias e não permite extrapolação para a companhia.",
+            "design": "SRS without replacement sized for at-least-one-exception detection in a synthetic sensitivity case",
+            "target_exception_count": target_exception_count,
+            "target_exception_rate_pct": target_exception_rate * 100,
+            "target_detection_probability": target_detection_probability,
+            "minimum_n_exact_hypergeometric": required_detection_n,
+            "selected_n_rounded_up": sample_size,
+            "probability_at_original_n_1000_pct": hypergeometric_detection_probability(n, target_exception_count, 1_000) * 100,
+            "probability_at_selected_n_pct": hypergeometric_detection_probability(n, target_exception_count, sample_size) * 100,
+            "attribute_precision_sensitivity": attribute_precision_sensitivity,
+            "original_attribute_basis": {"confidence": 0.95, "z": z_95, "p": expected_attribute_rate, "precision_percentage_points": tolerable_precision * 100, "minimum_n": n_required_attribute_ceiling},
+            "limitation": "The 0.03% benchmark is the rarest planted exception rate in this synthetic dataset, not an expected error rate for Direcional. Detection of at least one item does not demonstrate monetary adequacy or support extrapolation to the Company.",
         },
+        "detection_sensitivity": detection_sensitivity,
+        "monetary_sensitivity": monetary_sensitivity,
         "sample_detected_exception_counts": {r: sum(1 for row in sample if r in detected_rules(row)) for r in RULES},
         "targeted_top_value_size": len(top_rows), "targeted_top_value_unique_count": len(targeted_ids),
         "overlap_srs_and_targeted": len(targeted_ids & random_ids),
         "projected_synthetic_nrv_shortfall_brl": projected_shortfall,
         "projected_synthetic_nrv_shortfall_ci95_brl": [max(0, projected_shortfall - margin), projected_shortfall + margin],
+        "projected_synthetic_nrv_shortfall_ci95_method": "Normal approximation from SRS sample standard deviation with finite population correction; exploratory only, not a monetary audit-sampling design.",
         "actual_injected_synthetic_nrv_shortfall_brl": sum(max(0, int(r["book_value_cents_synthetic"]) - int(r["estimated_nrv_cents_synthetic"])) for r in detected_rows if r["injected_exception_code"] == "NRV_BELOW_BOOK") / 100,
         "population_exception_results": exception_summary,
         "sources": {"cvm_dfp": SOURCE_CVM, "ri_dfp": SOURCE_RI},
@@ -233,9 +317,14 @@ def analyze(dataset: Path, outdir: Path, sample_size: int = 1000, seed: int = 20
             with path.open("w", newline="", encoding="utf-8") as f:
                 w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
                 w.writeheader(); w.writerows(rows)
-    write_csv(outdir / "amostra_aleatoria_1000.csv", sample, ["detected_exception_codes", "sample_method"])
+    write_csv(outdir / f"amostra_aleatoria_{sample_size}.csv", sample, ["detected_exception_codes", "sample_method"])
     write_csv(outdir / "amostra_direcionada_top200.csv", top_rows, ["detected_exception_codes"])
     write_csv(outdir / "excecoes_detectadas_sinteticas.csv", detected_rows, ["detected_exception_codes"])
+    for filename, rows in (("sensibilidade_deteccao.csv", detection_sensitivity), ("sensibilidade_monetaria.csv", monetary_sensitivity)):
+        if rows:
+            with (outdir / filename).open("w", newline="", encoding="utf-8") as f:
+                writer = csv.DictWriter(f, fieldnames=list(rows[0]))
+                writer.writeheader(); writer.writerows(rows)
 
     dictionary = [
         ["synthetic_item_id", "string", "Chave primária única de item/posição de custo inteiramente sintética.", "SYN-INV-0000001…"],
@@ -293,9 +382,10 @@ def analyze(dataset: Path, outdir: Path, sample_size: int = 1000, seed: int = 20
         ("Conta/população", "Estoques", "Maior rubrica de ativo; Nota 5 detalha três classes."),
         ("População", n, "500.000 itens sintéticos únicos, distribuídos por três classes."),
         ("Saldo da população", total_cents/100, "R$; soma exata à rubrica Estoques da DFP 2025, sem representar razão real."),
-        ("Amostra aleatória simples sem reposição", len(sample), f"Seed {seed}; demonstração somente com itens sintéticos."),
-        ("Parâmetros do cálculo ilustrativo", "95% confiança; p=50%; precisão=±5 p.p.", "n0 = Z²·p·(1−p)/e²; Z=1,96."),
-        ("n mínimo com correção finita", n_required_attribute_ceiling, f"n0={n0_attribute:.2f}; n corrigido={n_required_attribute:.2f}; N={n}."),
+        ("Amostra aleatória simples sem reposição", len(sample), f"Seed {seed}; sorteio uniforme sem reposição de posições; apenas registros sintéticos."),
+        ("Critério primário de dimensionamento", "95% de probabilidade de detectar ≥1 exceção a 0,03%", f"Caso de sensibilidade: {target_exception_count} itens hipotéticos em N={n}; benchmark corresponde à menor taxa de exceção implantada, não a Direcional."),
+        ("n mínimo exato — hipergeométrica", required_detection_n, f"Probabilidade no n selecionado: {hypergeometric_detection_probability(n, target_exception_count, sample_size):.4%}; n=1.000: {hypergeometric_detection_probability(n, target_exception_count, 1_000):.4%}."),
+        ("Base alternativa antiga — atributo", f"n mínimo {n_required_attribute_ceiling}; n=1.000 margem ±{attribute_margin(n, 1_000)*100:.2f} p.p.", f"Precisão para proporção p=50%; não assegura detecção de exceções raras."),
         ("Fração amostral (%)", len(sample)/n*100, "N = 500.000."),
         ("Amostra dirigida de maiores valores", len(top_rows), "200 maiores valores; não projetável; separada da SRS."),
         ("Projeção didática de shortfall NRV", projected_shortfall, "R$; estimador média amostral × N; população sintética apenas."),
@@ -308,6 +398,18 @@ def analyze(dataset: Path, outdir: Path, sample_size: int = 1000, seed: int = 20
         ws.append([f"Exceção {rule}: detectada", vals["detected"], "Teste executado em 100% da base sintética."])
         ws.append([f"Exceção {rule}: não detectada", vals["missed"], "Comparação dos IDs implantados e identificados."])
         ws.append([f"Exceção {rule}: inesperada", vals["unexpected"], "Detecção sem injeção conhecida; apenas população artificial."])
+    style_sheet(ws)
+
+    ws = wb.create_sheet("Sensibilidade detecção")
+    ws.append(["Exceções hipotéticas", "Taxa (%)", "P(detectar ≥1), n=1.000 (%)", f"P(detectar ≥1), n={sample_size:,} (%)", "n mínimo para 95%"])
+    for row in detection_sensitivity:
+        ws.append([row["hypothetical_exception_count"], row["hypothetical_exception_rate_pct"], row["probability_detect_at_original_n_1000_pct"], row["probability_detect_at_current_n_pct"], row["minimum_n_for_95pct_detection"]])
+    style_sheet(ws)
+
+    ws = wb.create_sheet("Sensibilidade monetária")
+    ws.append(["n SRS (subconjunto aninhado)", "Shortfall observado na amostra R$", "Projeção sintética R$", "IC95% aprox. inferior R$", "IC95% aprox. superior R$", "Meia largura IC R$", "Limite superior / materialidade específica didática (%)"])
+    for row in monetary_sensitivity:
+        ws.append([row["sample_size"], row["sample_nrv_shortfall_brl"], row["projected_synthetic_shortfall_brl"], row["approx_ci95_lower_brl"], row["approx_ci95_upper_brl"], row["ci95_half_width_brl"], row["upper_ci_pct_of_didactic_specific_materiality"]])
     style_sheet(ws)
 
     ws = wb.create_sheet("Fontes")
@@ -332,7 +434,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--input", default="/home/ubuntu/direcional_audit/data/estoques_sinteticos.csv.gz")
     p.add_argument("--outdir", default="/home/ubuntu/direcional_audit/analysis")
-    p.add_argument("--sample-size", type=int, default=1000)
+    p.add_argument("--sample-size", type=int, default=10_000)
     p.add_argument("--seed", type=int, default=20251232)
     a = p.parse_args(); analyze(Path(a.input), Path(a.outdir), a.sample_size, a.seed)
 

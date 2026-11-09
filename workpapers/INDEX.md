@@ -41,7 +41,7 @@ A DFP integral pública foi obtida diretamente no RI e examinada nas páginas im
 ## Artefatos reproduzíveis relacionados
 
 - População integral de Estoques: `../data/estoques_sinteticos.csv.gz`; esquema: `../analysis/dicionario_variaveis.csv`; registro das injeções: `../data/injection_register.json`.
-- Resultados, amostras e conciliação: `../analysis/PT530_resultados.json`, `../analysis/amostra_aleatoria_1000.csv`, `../analysis/amostra_direcionada_top200.csv`, `../analysis/excecoes_detectadas_sinteticas.csv` e `../analysis/papel_amostragem_conciliacao.xlsx`.
+- Resultados, amostras, conciliação e sensibilidades: `../analysis/PT530_resultados.json`, `../analysis/amostra_aleatoria_10000.csv`, `../analysis/amostra_direcionada_top200.csv`, `../analysis/excecoes_detectadas_sinteticas.csv`, `../analysis/sensibilidade_deteccao.csv`, `../analysis/sensibilidade_monetaria.csv` e `../analysis/papel_amostragem_conciliacao.xlsx`.
 - Planilha complementar de riscos/programas: `../analysis/analises_e_programas.xlsx`.
 - Código reprodutível: `../scripts/generate_synthetic_inventory.py`, `../scripts/analyze_synthetic_inventory.py`, `../scripts/build_audit_support.py`, `../scripts/fix_dfp_page_refs.py`, `../scripts/validate_workpapers.py` e `../scripts/assemble_dossier.py`.
 
