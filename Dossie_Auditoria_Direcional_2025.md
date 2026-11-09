@@ -2,8 +2,8 @@
 
 ## Direcional Engenharia S.A. — exercício encerrado em 31 de dezembro de 2025
 
-**Preparador:** EDU-AUD-001 (matrícula didática, não atribuída a pessoa real)  
-**Data:** 22 de outubro de 2026  
+**Preparador:** Thainá Cristine Martins do Nascimento - 242011273  
+**Data:** 09 de novembro de 2026  
 **Revisor:** campo não preenchido — nenhuma revisão de terceiro foi simulada.  
 **Moeda:** reais; nas demonstrações, em geral R\$ mil.  
 **Classificação:** material didático baseado em informação pública e dados sintéticos.
