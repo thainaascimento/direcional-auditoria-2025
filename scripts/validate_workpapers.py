@@ -41,6 +41,10 @@ def main() -> int:
         if not path.is_file():
             continue
         text = path.read_text(encoding="utf-8")
+        if "242011273" not in text:
+            issues.append(f"{path.name}: matrícula 242011273 ausente")
+        if "EDU-AUD" in text:
+            issues.append(f"{path.name}: identificador provisório EDU-AUD ainda presente")
         for label, pattern in REQUIRED_TERMS.items():
             if not pattern.search(text):
                 issues.append(f"{path.name}: sem marcador detectável de {label}")

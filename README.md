@@ -34,7 +34,7 @@ A DFP de 2025 informa Estoques de R$6.951.508 mil, a maior rubrica individual do
 - `scripts/validate_workpapers.py` — verifica a completude formal dos 27 papéis e sinaliza dados públicos preliminares a revisar.
 - `scripts/fix_dfp_page_refs.py` — normaliza referências à paginação impressa da DFP (BP pp.16–17; DRE p.21; Nota 5 p.69; relatório pp.115–117).
 - `FONTES.md` — endereços, documentos, exercícios, datas de acesso e páginas.
-- `.typst-content-manifest.json`, `.typst-build-plan.json`, `reports/` — manifest/plano e fontes de compilação/verificação do PDF.
+- `scripts/build_pdf.sh` e `reports/pdf_style.css` — geração do PDF (pandoc + wkhtmltopdf). `.typst-content-manifest.json`, `.typst-build-plan.json` e `reports/typst/` são fontes alternativas de compilação via Typst.
 
 ## Reprodução
 
@@ -55,7 +55,7 @@ python3 scripts/fix_dfp_page_refs.py
 python3 scripts/validate_workpapers.py
 python3 scripts/build_audit_support.py
 python3 scripts/assemble_dossier.py
-typst compile reports/typst/main.typ Dossie_Auditoria_Direcional_2025.pdf
+sh scripts/build_pdf.sh   # requer pandoc e wkhtmltopdf
 ```
 
 Os testes em 100% da população sintética encontraram exatamente as cinco classes implantadas: 200 pendências documentais, 150 áreas inválidas, 500 sinais sintéticos de valor realizável líquido abaixo do valor contábil, 250 divergências de classificação e 300 avaliações antigas. Não houve falso positivo nem falso negativo **na população artificial conhecida**. Após a revisão do dimensionamento, a SRS foi ampliada para 10.000 itens. O tamanho foi escolhido para ter 95,17% de probabilidade hipergeométrica de selecionar ao menos um item se a taxa hipotética for 0,03%, igual à menor frequência artificial (150/500.000); para n=1.000, a probabilidade seria 25,94%. Essa taxa é uma sensibilidade sintética, não uma estimativa da Direcional. Com a semente publicada, a nova amostra encontrou três pendências documentais, zero áreas inválidas, 15 sinais de VLR, quatro classificações divergentes e oito avaliações antigas. A ausência dos casos de área é o risco residual esperado em cerca de 4,83% das amostras de n=10.000; não é evidência de ausência de erro real.

@@ -2,8 +2,10 @@
 
 ## Direcional Engenharia S.A. — exercício encerrado em 31 de dezembro de 2025
 
-**Preparador:** EDU-AUD-001 (matrícula didática, não atribuída a pessoa real)  
-**Data:** 22 de outubro de 2026  
+**Disciplina:** Auditoria 1 — Prova 2  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
+**Data de consulta das fontes:** 22 de outubro de 2026  
+**Data da atualização (revisão do dimensionamento amostral):** 09 de novembro de 2026  
 **Revisor:** campo não preenchido — nenhuma revisão de terceiro foi simulada.  
 **Moeda:** reais; nas demonstrações, em geral R\$ mil.  
 **Classificação:** material didático baseado em informação pública e dados sintéticos.
@@ -107,7 +109,7 @@ Os três status obrigatórios são usados nos papéis: **realizado com evidênci
 9. **NBC TA 265 — Comunicação de deficiências de controle interno — [PT-265](workpapers/PT-265.md).** Versão: Resolução CFC nº 1.210/09, conforme cadastro oficial consultado. Cobertura: matriz de condição, critério, causa, efeito e recomendação, separando hipóteses de constatações.
 10. **NBC TA 300 — Planejamento da auditoria — [PT-300](workpapers/PT-300.md).** Versão: R1, considerada a Revisão NBC 11. Cobertura: estratégia global, plano, cronograma e programas por ciclo.
 11. **NBC TA 315 — Identificação e avaliação dos riscos de distorção relevante — [PT-315](workpapers/PT-315.md).** Versão: R2, publicada em 2021 e aplicável ao período. Cobertura: entidade, ambiente, estrutura contábil, TI/controles, riscos por conta/afirmação e riscos significativos.
-12. **NBC TA 320 — Materialidade no planejamento e na execução — [PT-320](workpapers/PT-320.md).** Versão: R1, texto oficial CFC publicado em 2016. Cobertura: cenários didáticos — global 0,75% do ativo; execução 70%; nível específico 0,50% para terrenos; limite trivial 5% da global. Não são percentuais normativos nem materialidade da PwC.
+12. **NBC TA 320 — Materialidade no planejamento e na execução — [PT-320](workpapers/PT-320.md).** Versão: R1, texto oficial CFC publicado em 2016. Cobertura: cenários didáticos — global 0,75% do ativo; execução 70%; nível específico 0,50% sobre estoques (R\$ 34.757,54 mil; terrenos são 81,7% da rubrica); limite trivial 5% da global. Não são percentuais normativos nem materialidade da PwC.
 13. **NBC TA 330 — Respostas do auditor aos riscos avaliados — [PT-330](workpapers/PT-330.md).** Versão: R1, com Revisão NBC 11. Cobertura: relação entre riscos e respostas, controles/substantivos, natureza, época e extensão, com status por procedimento.
 14. **NBC TA 402 — Entidade que utiliza organização prestadora de serviços — [PT-402](workpapers/PT-402.md).** Versão: Resolução CFC nº 1.215/09, com alterações NBC 11/NBC 20. Cobertura: identificação de serviços relevantes, controles complementares, relatórios Tipo 1/2 e procedimentos alternativos.
 15. **NBC TA 450 — Avaliação das distorções identificadas — [PT-450](workpapers/PT-450.md).** Versão: R1, itens 1–15 e aplicação A1–A30. Cobertura: registro de distorções observadas/documentais e simuladas, avaliação quantitativa/qualitativa e limites de conclusão.
@@ -116,7 +118,7 @@ Os três status obrigatórios são usados nos papéis: **realizado com evidênci
 18. **NBC TA 505 — Confirmações externas — [PT-505](workpapers/PT-505.md).** Versão: Resolução CFC nº 1.219/09, conforme cadastro oficial consultado. Cobertura: minutas didáticas, controle de circularização, tratamento de diferenças e alternativas; nenhuma solicitação real foi enviada.
 19. **NBC TA 510 — Trabalhos iniciais: saldos iniciais — [PT-510](workpapers/PT-510.md).** Versão: R1, texto CFC publicado em 2016. Cobertura: comparativos de 2024, políticas contábeis e implicações do relatório do auditor anterior, sem acesso a papéis privados.
 20. **NBC TA 520 — Procedimentos analíticos — [PT-520](workpapers/PT-520.md).** Versão: Resolução CFC nº 1.221/09, conforme cadastro oficial consultado. Cobertura: análises reproduzíveis — ativo +31,3%; estoques/ativo 52,6%; terrenos totais +23,8%, 43,0% do ativo e 81,7% dos estoques.
-21. **NBC TA 530 — Amostragem em auditoria — [PT-530](workpapers/PT-530.md).** Versão: Resolução CFC nº 1.222/09, conforme cadastro oficial consultado. Cobertura: população sintética de 500.000 registros, SRS de 1.000 itens, seleção dirigida de 200, cinco classes de exceções implantadas e projeção exclusivamente didática; nenhuma amostra real da companhia.
+21. **NBC TA 530 — Amostragem em auditoria — [PT-530](workpapers/PT-530.md).** Versão: Resolução CFC nº 1.222/09, conforme cadastro oficial consultado. Cobertura: população sintética de 500.000 registros, SRS de 10.000 itens (sem reposição, semente 20251232), seleção dirigida de 200, cinco classes de exceções implantadas e projeção exclusivamente didática; nenhuma amostra real da companhia.
 22. **NBC TA 540 — Auditoria de estimativas contábeis — [PT-540](workpapers/PT-540.md).** Versão: R2, resolução CFC de 2019, aplicável a 2025. Cobertura: estimativa/NRV, método, dados, premissas, incerteza, possível viés e análise de sensibilidade com limitações explícitas.
 23. **NBC TA 550 — Partes relacionadas — [PT-550](workpapers/PT-550.md).** Versão: Resolução CFC nº 1.224/09, alterada pela Revisão NBC 20. Cobertura: Nota 6 pp.70–71, saldos/transações divulgados e limites da avaliação de completude sem razão, cadastros, contratos e confirmações.
 24. **NBC TA 560 — Eventos subsequentes — [PT-560](workpapers/PT-560.md).** Versão: R1, texto CFC publicado em 2016. Cobertura: data de corte 22/10/2026 e exame de ITR, prévia operacional, debêntures e comunicado acionário posteriores a 2025.
@@ -184,7 +186,7 @@ Os documentos públicos não fornecem razão auxiliar, cadastro de terrenos, mat
 
 # PT-EC — Estrutura Conceitual para Trabalhos de Asseguração
 
-**Norma e itens:** NBC TA Estrutura Conceitual, itens 1–4, 10–16, 22–26, 27–49, 50–82 e 83–92; texto oficial do CFC e Revisão NBC 15. **Exercício:** demonstrações consolidadas de 31/12/2025. **Preparador:** EDU-AUD-001, matrícula didática. **Data:** 22/10/2026. **Revisão:** campo reservado; não preenchido.
+**Norma e itens:** NBC TA Estrutura Conceitual, itens 1–4, 10–16, 22–26, 27–49, 50–82 e 83–92; texto oficial do CFC e Revisão NBC 15. **Exercício:** demonstrações consolidadas de 31/12/2025. **Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273. **Data:** 22/10/2026. **Revisão:** campo reservado; não preenchido.
 
 ## 1. Objetivo, objeto e partes
 
@@ -259,7 +261,7 @@ O enquadramento conceitual é compatível com uma auditoria de demonstrações h
 
 # PT-200 — Objetivos Gerais do Auditor Independente
 
-**Norma:** NBC TA 200 (R1), em especial itens 3–8, 11–17, 18–24, 26–30, 35–41 e A1–A76, conforme aplicável; texto oficial CFC. **Objeto de planejamento:** demonstrações consolidadas da Direcional Engenharia S.A. em 31/12/2025. **Preparador:** EDU-AUD-001, matrícula didática. **Data:** 22/10/2026. **Revisão:** campo reservado, sem assinatura ou revisor simulado.
+**Norma:** NBC TA 200 (R1), em especial itens 3–8, 11–17, 18–24, 26–30, 35–41 e A1–A76, conforme aplicável; texto oficial CFC. **Objeto de planejamento:** demonstrações consolidadas da Direcional Engenharia S.A. em 31/12/2025. **Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273. **Data:** 22/10/2026. **Revisão:** campo reservado, sem assinatura ou revisor simulado.
 
 ## 1. Objetivo e área de foco
 
@@ -278,7 +280,7 @@ Terrenos representam 81,7% dos estoques e 43,0% do ativo consolidado em 2025. Re
 | Evidência apropriada e suficiente | Planejar natureza, época e extensão dos procedimentos; obter evidência confiável e relevante; tratar inconsistências ou dúvidas sobre sua confiabilidade. | Documentos públicos foram inspecionados nas páginas referidas; nenhuma confirmação, inspeção física, teste de controle ou acesso a sistemas foi realizado. |
 | Ceticismo profissional | Manter postura questionadora e avaliar criticamente evidências e explicações, reconhecendo que documentação pública e estimativas podem ser incompletas ou enviesadas. | Hipóteses abaixo não são achados; qualquer explicação da administração exigiria corroboração. |
 | Julgamento profissional | Aplicar conhecimento, treinamento e experiência para decisões sobre riscos, materialidade, procedimentos, suficiência da evidência e conclusão. | Limiares e procedimentos do dossiê são didáticos, não decisões da PwC. |
-| Requisitos éticos e independência | Cumprir requisitos éticos profissionais aplicáveis, inclusive independência quando exigida, antes e durante eventual trabalho; identificar, avaliar e responder a ameaças. | Não houve contratação ou atuação como auditor. A matrícula EDU-AUD-001 é fictícia e não representa declaração de independência de pessoa ou firma real. |
+| Requisitos éticos e independência | Cumprir requisitos éticos profissionais aplicáveis, inclusive independência quando exigida, antes e durante eventual trabalho; identificar, avaliar e responder a ameaças. | Não houve contratação ou atuação como auditor. A matrícula 242011273 identifica a autora do trabalho acadêmico e não representa declaração de independência de pessoa ou firma real. |
 
 A possibilidade de fraude é considerada em todo o trabalho. O risco de não detectar fraude é maior do que o de não detectar erro, especialmente quando há conluio, falsificação, omissão intencional, representações falsas ou burla de controles pela administração. Presunções de risco e exemplos normativos direcionam procedimentos; não provam fraude. O auditor não promete detectar todo ato ilegal, fraude ou falha de controle. (NBC TA 200, itens 5–7, 15–17 e A1–A76.) [1] [2]
 
@@ -343,7 +345,7 @@ A comparação de ativos subiu 31,3% e terrenos, 23,8% entre 2024 e 2025; essas 
 | Período | Exercício encerrado em 31/12/2025 |
 | Natureza | Papel de trabalho **didático**; não integra nem substitui os papéis do auditor independente da Companhia |
 | Norma e itens | NBC TA 210 (R1), “Concordância com os Termos do Trabalho de Auditoria”, na redação publicada pelo CFC e alterada pela Revisão NBC 11: itens 1–8, 9–13, 14–21; orientações A1–A35 conforme aplicáveis; Apêndice 1 como exemplo não obrigatório de carta. Referências centrais: itens 3, 4, 6–13 e A11–A28. |
-| Preparador | EDU-AUD-001 (matrícula didática) |
+| Preparador | Thainá Cristine Martins do Nascimento — matrícula 242011273 |
 | Data | 22/10/2026 |
 | Revisor |  |
 
@@ -441,7 +443,7 @@ Este é um produto pedagógico baseado em fontes abertas. O PDF integral da DFP 
 **Exercício:** encerrado em 31/12/2025  
 **Tipo de documento:** papel de trabalho didático; não é relatório de auditoria nem documentação do auditor independente  
 **Data de acesso às fontes:** 22/10/2026  
-**Preparador:** matrícula didática **EDU-AUD-001** — 22/10/2026  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273 — 22/10/2026  
 **Revisor:** ____________________________________  **Data:** __________________
 
 ## Código, título, norma e itens
@@ -542,7 +544,7 @@ Legenda: **PÚBLICO — realizado com evidência pública** significa somente le
 **Norma:** NBC TA 230 (R1) — Documentação de Auditoria; texto oficial CFC aplicável a períodos encerrados em ou após 31/12/2016. Itens 1–16 e A1–A24.  
 **Tipo de trabalho:** papel de trabalho didático; não é papel integrante do arquivo da auditoria da PwC nem asseguração independente.  
 **Data de acesso às fontes:** 22/10/2026  
-**Preparador:** EDU-AUD-001 — matrícula didática; 22/10/2026  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273; 22/10/2026  
 **Revisor:** ____________________________________ **Data:** __________________
 
 ## Objetivo, conta e processo
@@ -614,9 +616,9 @@ Os identificadores E-01 a E-04 apontam para fontes públicas, não para evidênc
 
 ## Preparação e revisão
 
-**Preparador (matrícula didática):** EDU-AUD-001  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Data:** 22/10/2026  
-**Assinatura/identificação:** EDU-AUD-001  
+**Assinatura/identificação:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Revisor:** ____________________________________  
 **Data da revisão:** __________________  
 **Extensão/resultado da revisão:** __________________________________________________
@@ -647,7 +649,7 @@ Os identificadores E-01 a E-04 apontam para fontes públicas, não para evidênc
 - **Data-base / exercício:** 31/12/2025.
 - **Norma e versão aplicável:** NBC TA 240 (R1), “Responsabilidade do Auditor em Relação a Fraude, no Contexto da Auditoria de Demonstrações Contábeis”, texto oficial CFC com alterações aplicáveis ao exercício de 2025; itens 10–48 e orientações A1–A69, conforme referências abaixo. A NBC TA 240 (R2), publicada em 25/09/2026, é aplicável a períodos iniciados a partir de 01/01/2027; portanto, não rege o período de 2025 tratado neste PT. [1] [2]
 - **Natureza:** auditoria didática baseada somente em evidências públicas. Não é papel de auditoria real da companhia nem substitui o arquivo de auditoria do auditor independente.
-- **Preparador:** matrícula didática **EDU-AUD-001**.
+- **Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273.
 - **Data:** **22/10/2026**.
 - **Revisão / revisor:**
 - **Unidade monetária:** R\$ mil, salvo indicação em contrário.
@@ -748,7 +750,7 @@ Este PT não teve acesso a balancetes, razão geral, auxiliares, população de 
 **Exercício:** encerrado em 31/12/2025  
 **Natureza:** papel de trabalho didático, baseado em evidência pública  
 **Data de acesso e preparação:** 22/10/2026  
-**Preparador:** matrícula didática EDU-AUD-001  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Revisão:** ____________________________________
 
 ## Identificação, norma e itens
@@ -868,7 +870,7 @@ Os procedimentos seguintes são **planejados**, não executados. Devem ser adapt
 | Entidade / demonstrações | DIRECIONAL ENGENHARIA S.A. — demonstrações contábeis consolidadas |
 | Exercício | Encerrado em 31/12/2025 |
 | Norma / versão | **NBC TA 260 (R2)** — texto oficial do CFC, originado em 17/06/2016 e aplicável a auditorias de demonstrações contábeis para períodos encerrados em ou após 31/12/2016. No texto oficial consolidado consultado, a Revisão NBC 27 está identificada, inclusive a inclusão do item 16A. Referências principais: itens 1–3, 8–10, 11–23; aplicação A1–A8, A11–A16, A17–A32, A37–A54; Apêndice 2. PDF oficial do CFC, pp. 1–25; requisitos de comunicação, pp. 5–6. [1] [2] |
-| Preparador | Matrícula didática **EDU-AUD-001** |
+| Preparador | Thainá Cristine Martins do Nascimento — matrícula 242011273 |
 | Data de preparação / acesso | **22/10/2026** |
 | Revisor | ______________________________ (em branco) |
 | Natureza | Papel de trabalho **didático**, limitado a fontes públicas; não representa auditoria executada nem arquivo de auditoria da PwC ou da companhia. |
@@ -963,7 +965,7 @@ Os tópicos abaixo são **riscos/hipóteses para planejamento e comunicação**,
 | **Exercício** | Encerrado em 31/12/2025 |
 | **Norma / itens** | NBC TA 265 — Resolução CFC nº 1.210/09, texto aprovado sem revisão indicada no cadastro oficial do CFC; itens 1–11 e materiais de aplicação A1–A30, em especial A5–A11 e A27–A30. Aplicável a períodos iniciados em ou após 01/01/2010. Versão normativa aplicável ao exercício, verificada em 22/10/2026: NBC TA 265 (sem sufixo R), Resolução CFC nº 1.210/09, vigente e sem alteração/revogação no cadastro oficial. [1] [2] |
 | **Data de acesso / elaboração** | 22/10/2026 |
-| **Preparador** | EDU-AUD-001 (matrícula didática) |
+| **Preparador** | Thainá Cristine Martins do Nascimento — matrícula 242011273 |
 | **Revisão** | ____________________ (em branco) |
 
 > **Natureza do documento:** papel de trabalho exclusivamente didático, baseado em informações públicas indicadas neste documento. Não é parte dos papéis de trabalho da PwC nem representa auditoria executada pela pessoa preparadora. Não houve acesso a registros, controles, pessoas ou instalações internas da Companhia. A classificação de qualquer hipótese abaixo não constitui achado nem constatação de deficiência.
@@ -1056,7 +1058,7 @@ A NBC TA 265 define deficiência de controle interno em termos de desenho, imple
 **Norma aplicável:** NBC TA 300 (R1), *Planejamento da Auditoria de Demonstrações Contábeis*, texto oficial do CFC vigente para o exercício de 2025, consideradas as alterações da Revisão NBC 11/2021. A página de normas do CFC identifica a norma como NBC TA 300 (R1), publicada no DOU em 05/09/2016; a ficha oficial registra a Revisão NBC 11, publicada em 02/09/2021, como alteração da NBC TA 300 (R1). O arquivo normativo do CFC apresenta os itens 1–13 e materiais explicativos A1–A22. [1] [2] [3]  
 **Itens da NBC TA 300 relacionados:** 2–13, A1–A22 e Apêndice. Em especial: objetivo no item 4; envolvimento da equipe-chave e atividades preliminares nos itens 5–6; estratégia global no item 7–8; plano de auditoria no item 9; atualização no item 10; direção, supervisão e revisão no item 11; documentação no item 12; e considerações de auditoria inicial no item 13.  
 **Data de acesso às fontes:** 22/10/2026  
-**Preparador:** matrícula didática EDU-AUD-001 — preparação didática, sem vínculo declarado com a companhia ou com o auditor independente.  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273 — preparação didática, sem vínculo declarado com a companhia ou com o auditor independente.  
 **Revisão:** ______________________________  
 **Data da revisão:** _______________________
 
@@ -1159,7 +1161,7 @@ Em linha com os itens 7–9 da NBC TA 300, a estratégia proposta é auditar as 
 | **Período** | Exercício encerrado em 31/12/2025 |
 | **Norma / itens** | NBC TA 315 (R2), de 19/08/2021, publicada no DOU em 02/09/2021. Aplicação para períodos iniciados a partir de 01/01/2022, item 10. Requisitos considerados: itens 11–13, 16–20, 23–29, 30–38; definições do item 12; material explicativo A11–A47, A48–A183 e A184–A241; Apêndices 1–4, em especial o Apêndice 4 sobre afirmações. O registro oficial CFC consultado informa norma vigente, não alterada e não revogada na data de acesso. [1] [2] |
 | **Data de acesso** | 22/10/2026 |
-| **Preparador** | Matrícula didática EDU-AUD-001 |
+| **Preparador** | Thainá Cristine Martins do Nascimento — matrícula 242011273 |
 | **Data de preparação** | 22/10/2026 |
 | **Revisão** | ____________________________________ |
 
@@ -1260,7 +1262,7 @@ Este papel tem finalidade didática e não foi preparado ou autorizado pela comp
 | Finalidade | Papel de trabalho **didático**. Não é documentação do trabalho da PwC nem afirma que este preparador participou da auditoria independente. |
 | Norma | NBC TA 320 (R1), *Materialidade no Planejamento e na Execução da Auditoria*. Texto oficial do CFC; resolução de 19/08/2016, publicada no DOU em 05/09/2016. O registro oficial consultado em 22/10/2026 identifica-a como vigente, não alterada e não revogada. Aplicação às auditorias de períodos findos em ou após 31/12/2016. [1] [2] |
 | Itens normativos considerados | Itens 1–14, com foco nos itens 4–6 e 10–14; material de aplicação A1–A14, especialmente A3–A13. A norma estabelece julgamento profissional, não percentuais obrigatórios de benchmark. [2] |
-| Preparador | Matrícula didática **EDU-AUD-001** |
+| Preparador | Thainá Cristine Martins do Nascimento — matrícula 242011273 |
 | Data | **22/10/2026** |
 | Revisão |  |
 
@@ -1348,7 +1350,7 @@ Os limites de R\$99.147,26 mil, R\$69.403,08 mil, R\$34.757,54 mil e R\$4.957,36
 | Natureza | Papel de trabalho didático, preparado com informações públicas identificadas e documentos da DFP efetivamente examinados. Não é arquivo de auditoria da PwC nem representa trabalho executado pela PwC. |
 | Norma | **NBC TA 330 (R1), Resposta do Auditor aos Riscos Avaliados**, texto oficial do CFC vigente consultado em 22/10/2026. A versão R1 foi publicada no DOU em 05/09/2016; a página oficial do CFC registra que a norma permanece em vigor, foi alterada pela Revisão NBC 11 (DOU 02/09/2021) e não foi revogada. A redação aplicável deve ser lida com as alterações da Revisão NBC 11. [1] [2] |
 | Itens da norma considerados | Objetivo e requisitos: itens 5–10 (respostas gerais, procedimentos adicionais, natureza/época/extensão), 11–17 (testes de controles, quando aplicáveis), 18–23 (procedimentos substantivos e respostas a riscos significativos), 24–27 (apresentação, suficiência de evidência e providências se insuficiente) e 28–30 (documentação e conciliação com registros). Aplicação pertinente: A1–A3, A4–A6, A7–A10, A11–A20, A21–A25, A26–A30, A35–A36, A59–A65, conforme o tema. [2] |
-| Preparador | Matrícula didática **EDU-AUD-001** |
+| Preparador | Thainá Cristine Martins do Nascimento — matrícula 242011273 |
 | Data | **22/10/2026** |
 | Revisão |  |
 
@@ -1445,7 +1447,7 @@ Os procedimentos P05–P11 são propostas, não atividades em andamento ou já r
 | Entidade / demonstrações | DIRECIONAL ENGENHARIA S.A. — demonstrações contábeis **consolidadas** para o exercício findo em **31/12/2025** |
 | Natureza do trabalho | **Didático**. Este documento não é papel de trabalho de auditoria real, não pertence à PwC e não expressa asseguração ou opinião sobre as demonstrações. |
 | Data de acesso e preparação | **22/10/2026** |
-| Preparador | Matrícula didática **EDU-AUD-001** |
+| Preparador | Thainá Cristine Martins do Nascimento — matrícula 242011273 |
 | Revisor |  |
 
 ## Objetivo, conta e processo
@@ -1630,7 +1632,7 @@ Os fatores a seguir são **hipóteses de risco para planejamento didático**, n�
 
 ## Preparação e revisão
 
-**Preparador:** matrícula didática EDU-AUD-001  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Data:** 22/10/2026  
 **Revisão (nome, assinatura e data):** ______________________________________________  
 
@@ -1745,7 +1747,7 @@ As referências “E-500” são identificadores internos deste papel didático.
 
 ## Preparação e revisão
 
-**Preparador:** matrícula didática EDU-AUD-001  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Data:** 22/10/2026  
 **Revisor:** ______________________________  
 **Data da revisão:** ______________________
@@ -1776,7 +1778,7 @@ As referências “E-500” são identificadores internos deste papel didático.
 | Natureza | Papel de trabalho **didático**; não constitui documentação de auditoria efetivamente executada nem opinião independente |
 | Norma | **NBC TA 501 — Evidência de Auditoria — Considerações Específicas para Itens Selecionados**, Resolução CFC nº 1.218/09, texto normativo aplicável alterado pela Revisão NBC 20 (2023), conforme cadastro do CFC. Aplicável a períodos iniciados em ou após 01/01/2010. O cadastro do CFC informa que a resolução está em vigor, não foi revogada e foi alterada pela Revisão NBC 20, publicada no DOU de 06/12/2023; a norma consta no índice oficial como NBC TA 501, sem designação “R1”. [1] [2] |
 | Itens utilizados | NBC TA 501, itens **1–3** (alcance/objetivo); **4–8** (estoques); **9–12** (litígios e reclamações/representações); **13** (informações por segmento); aplicação e material explicativo **A1–A16**, **A17–A25** e **A26–A27**, respectivamente. O texto da Resolução 1.218/09 consultado traz esses números e requisitos; a Revisão NBC 20 é indicada aqui por ser a alteração listada pelo CFC. [1] [2] |
-| Preparador | Matrícula didática **EDU-AUD-001** |
+| Preparador | Thainá Cristine Martins do Nascimento — matrícula 242011273 |
 | Data de preparação | **22/10/2026** |
 | Revisão | **____________________________** (em branco) |
 
@@ -1956,7 +1958,7 @@ Não há cartas, e-mails de confirmação, respostas, registros de telefonema, e
 
 ## Preparação e revisão
 
-**Preparador:** matrícula didática **EDU-AUD-001**  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Data:** 22/10/2026  
 **Revisão:** ______________________________  
 **Data da revisão:** ________________________
@@ -1986,7 +1988,7 @@ Não há cartas, e-mails de confirmação, respostas, registros de telefonema, e
 | Período sob exame | Exercício encerrado em 31/12/2025 |
 | Data de referência dos saldos iniciais | 01/01/2025, correspondentes, em regra, aos saldos finais de 31/12/2024 |
 | Norma | NBC TA 510 (R1), *Trabalhos Iniciais — Saldos Iniciais*, texto oficial do CFC, publicado no DOU em 05/09/2016; aplicável a auditorias de períodos encerrados em ou após 31/12/2016. No índice oficial consultado em 22/10/2026 consta em vigor, sem revogação ou alteração posterior indicada. Itens principalmente aplicáveis: 1–13; material explicativo A1–A9. A norma deve ser lida com NBC TA 200, e, conforme o assunto, NBC TA 300, 315, 450, 500, 505, 540, 705 e 710. [1] [2] |
-| Preparador | Matrícula didática EDU-AUD-001 |
+| Preparador | Thainá Cristine Martins do Nascimento — matrícula 242011273 |
 | Data | 22/10/2026 |
 | Revisor / data da revisão |  |
 | Natureza | Papel de trabalho didático, construído com evidência pública. Não é papel de auditoria de campo nem documentação de auditoria efetivamente executada pela PwC ou por outro auditor. |
@@ -2136,7 +2138,7 @@ A execução de testes substantivos sobre receita imobiliária e provisões para
 
 **Limitações e salvaguardas:** não houve acesso a livros contábeis, contratos, escrituras, registros de propriedade, laudos, orçamento, dados operacionais, informações por projeto, previsões, controles internos, atas ou correspondência. Não houve confirmação externa, entrevista ou indagação, inspeção física, observação, recálculo do razão, teste de corte, teste de detalhes, avaliação de valor realizável líquido ou validação de premissas. Nenhum procedimento interno foi executado. As informações públicas foram usadas para análise descritiva e instrução; os registros oficiais estruturados não têm paginação PDF. O fato de a auditoria publicada ter opinião sem ressalva não substitui nem valida os procedimentos didáticos aqui descritos.
 
-**Preparado por:** matrícula didática **EDU-AUD-001**  
+**Preparado por:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Data:** 22/10/2026  
 **Revisão por:** ______________________________  
 **Data da revisão:** ___________________________
@@ -2158,7 +2160,7 @@ A execução de testes substantivos sobre receita imobiliária e provisões para
 
 # PT-530 — Amostragem em auditoria
 
-**Entidade/escopo de referência:** DIRECIONAL ENGENHARIA S.A. e controladas, demonstrações consolidadas encerradas em 31/12/2025. **Natureza:** exercício didático com população inteiramente sintética; não representa teste da Companhia nem trabalho da PwC. **Preparador:** matrícula didática EDU-AUD-001. **Data da base:** 22/10/2026. **Revisão do dimensionamento:** 09/11/2026, após comentário docente. **Revisão independente:** campo em branco.
+**Entidade/escopo de referência:** DIRECIONAL ENGENHARIA S.A. e controladas, demonstrações consolidadas encerradas em 31/12/2025. **Natureza:** exercício didático com população inteiramente sintética; não representa teste da Companhia nem trabalho da PwC. **Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273. **Data da base:** 22/10/2026. **Revisão do dimensionamento:** 09/11/2026, após comentário docente. **Revisão independente:** campo em branco.
 
 ## Norma, objetivo e conta
 
@@ -2402,7 +2404,7 @@ Os itens abaixo são planos e não foram executados neste trabalho.
 
 ## 7. Preparação e revisão
 
-**Preparador:** matrícula didática **EDU-AUD-001**  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Data:** **22/10/2026**  
 **Revisor:** ______________________________  
 **Data da revisão:** _______________________  
@@ -2429,7 +2431,7 @@ Os itens abaixo são planos e não foram executados neste trabalho.
 **Código/título:** PT-550 — Partes relacionadas  
 **Norma:** NBC TA 550 — Partes Relacionadas, itens 1–28 e aplicação A1–A50, com ênfase nos itens 9–28, Resolução CFC nº 1.224/09, vigente para períodos iniciados em ou após 01/01/2010. O cadastro oficial do CFC a indica vigente e alterada pela Revisão NBC20, publicada em 06/12/2023, em decorrência da NBC TA 600 (R2). Base normativa consultada: texto oficial CFC em PDF, versão publicada; ver referências [1] e [2].  
 **Data de acesso das fontes:** 22/10/2026  
-**Preparador:** EDU-AUD-001 (matrícula didática) — 22/10/2026  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273 — 22/10/2026  
 **Revisor:** ____________________________________ (em branco)
 
 > **Natureza do documento:** papel de trabalho exclusivamente didático, preparado com dados públicos acessíveis e premissas factuais fornecidas no enunciado. Não representa auditoria, asseguração, revisão ou validação das demonstrações financeiras. Nenhum acesso interno, confirmação, entrevista, inspeção física ou procedimento de auditoria sobre livros e documentos da Companhia foi executado.
@@ -2527,7 +2529,7 @@ Os itens abaixo são planos e não foram executados neste trabalho.
 **Entidade:** Direcional Engenharia S.A. e controladas  
 **Exercício:** encerrado em 31/12/2025  
 **Data de acesso/execução didática:** 22/10/2026  
-**Preparador:** matrícula didática EDU-AUD-001  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Revisor:** ____________________________________  
 **Data da revisão:** __________________
 
@@ -2642,7 +2644,7 @@ A DFP pública integral foi obtida no RI e o relatório do auditor foi examinado
 | Referência da informação financeira | DFP — Demonstrações Financeiras Padronizadas de 31/12/2025, **Versão 1**, protocolada na CVM em 09/03/2026, conforme base pública indicada para este trabalho. Documento correspondente disponível no RI; demonstrações consolidadas e notas/relatório do auditor são referenciados abaixo por página impressa da DFP. [4] [5] |
 | Auditor independente indicado na DFP | PricewaterhouseCoopers Auditores Independentes Ltda. (PwC). Relatório assinado em 09/03/2026. [4] |
 | Data de acesso / elaboração didática | **22/10/2026** |
-| Preparador | **EDU-AUD-001** (matrícula didática) |
+| Preparador | **Thainá Cristine Martins do Nascimento — matrícula 242011273** |
 | Revisor |  |
 
 > **Natureza deste papel:** peça exclusivamente didática, baseada em informação pública consultada. Não é arquivo de auditoria da companhia, não documenta trabalho executado pelo auditor independente e não constitui opinião de auditoria. Não houve entrevista, confirmação externa, inspeção física, consulta à administração ou acesso a livros, previsões, atas, correspondência ou papéis internos.
@@ -2736,7 +2738,7 @@ Os itens abaixo são **planejamento, não procedimentos realizados**. Requerem a
 
 | Função | Identificação | Data | Assinatura |
 |---|---|---|---|
-| Preparador | **EDU-AUD-001 — matrícula didática** | **22/10/2026** |  |
+| Preparador | **Thainá Cristine Martins do Nascimento — matrícula 242011273** | **22/10/2026** |  |
 | Revisor |  |  |  |
 
 ## Referências
@@ -2833,7 +2835,7 @@ Legenda: **Realizado — evidência pública** significa leitura/inspeção de f
 
 ---
 
-**Preparador:** matrícula didática **EDU-AUD-001**  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Data de preparação:** **22/10/2026**  
 **Revisor:** ____________________________________  
 **Data da revisão:** ______________________________
@@ -2857,7 +2859,7 @@ Legenda: **Realizado — evidência pública** significa leitura/inspeção de f
 **Entidade:** DIRECIONAL ENGENHARIA S.A. — demonstrações contábeis consolidadas  
 **Exercício:** encerrado em 31/12/2025  
 **Código/título:** PT-600 — NBC TA 600 (R2), *Considerações especiais — auditorias de demonstrações contábeis de grupos, incluindo o trabalho dos auditores dos componentes*  
-**Preparador:** matrícula didática **EDU-AUD-001**  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Data:** 22/10/2026  
 **Revisor:** ____________________________________  
 **Data da revisão:** ____________________________  

@@ -1,6 +1,6 @@
 # PT-EC — Estrutura Conceitual para Trabalhos de Asseguração
 
-**Norma e itens:** NBC TA Estrutura Conceitual, itens 1–4, 10–16, 22–26, 27–49, 50–82 e 83–92; texto oficial do CFC e Revisão NBC 15. **Exercício:** demonstrações consolidadas de 31/12/2025. **Preparador:** EDU-AUD-001, matrícula didática. **Data:** 22/10/2026. **Revisão:** campo reservado; não preenchido.
+**Norma e itens:** NBC TA Estrutura Conceitual, itens 1–4, 10–16, 22–26, 27–49, 50–82 e 83–92; texto oficial do CFC e Revisão NBC 15. **Exercício:** demonstrações consolidadas de 31/12/2025. **Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273. **Data:** 22/10/2026. **Revisão:** campo reservado; não preenchido.
 
 ## 1. Objetivo, objeto e partes
 

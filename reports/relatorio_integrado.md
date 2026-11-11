@@ -2,8 +2,10 @@
 
 ## Direcional Engenharia S.A. — exercício encerrado em 31 de dezembro de 2025
 
-**Preparador:** EDU-AUD-001 (matrícula didática, não atribuída a pessoa real)  
-**Data:** 22 de outubro de 2026  
+**Disciplina:** Auditoria 1 — Prova 2  
+**Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
+**Data de consulta das fontes:** 22 de outubro de 2026  
+**Data da atualização (revisão do dimensionamento amostral):** 09 de novembro de 2026  
 **Revisor:** campo não preenchido — nenhuma revisão de terceiro foi simulada.  
 **Moeda:** reais; nas demonstrações, em geral R$ mil.  
 **Classificação:** material didático baseado em informação pública e dados sintéticos.
