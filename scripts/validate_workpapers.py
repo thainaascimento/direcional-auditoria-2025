@@ -41,6 +41,14 @@ def main() -> int:
         if not path.is_file():
             continue
         text = path.read_text(encoding="utf-8")
+        required_artifacts = {
+            "PT-505.md": ["Modelo de carta de confirmação", "Controle de circularização", "Quadro de tratamento de diferenças", "Procedimentos alternativos"],
+            "PT-265.md": ["Matriz de deficiências", "Condição (", "Critério", "Causa", "Efeito", "Recomendação"],
+            "PT-230.md": ["Convenção de códigos", "Controle de versões", "Montagem e guarda", "Índice do arquivo"],
+        }
+        for needle in required_artifacts.get(path.name, []):
+            if needle.lower() not in text.lower():
+                issues.append(f"{path.name}: artefato exigido pelo roteiro ausente ({needle})")
         if "242011273" not in text:
             issues.append(f"{path.name}: matrícula 242011273 ausente")
         if "EDU-AUD" in text:

@@ -64,4 +64,6 @@ A sensibilidade monetária aninhada mostra projeção sintética de VLR de R$1.7
 
 ## Integridade e fonte do arquivo
 
+**Verificação de integridade:** `CHECKSUMS.sha256` guarda o SHA-256 dos arquivos da versão fechada (gerado por `sh scripts/make_checksums.sh`); para conferir, rode `sha256sum -c CHECKSUMS.sha256`. O controle de versões e a convenção de códigos estão no PT-230.
+
 Os PDFs públicos consultados foram arquivados localmente apenas para suporte ao trabalho e estão excluídos do pacote Git por `.gitignore`; o usuário pode obtê-los nos links em `FONTES.md`. A base sintética comprimida tem aproximadamente 21 MB, está incluída no repositório e não excede o limite por arquivo do GitHub.

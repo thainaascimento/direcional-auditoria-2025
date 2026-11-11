@@ -6,6 +6,7 @@
 **Preparador:** Thainá Cristine Martins do Nascimento — matrícula 242011273  
 **Data de consulta das fontes:** 22 de outubro de 2026  
 **Data da atualização (revisão do dimensionamento amostral):** 09 de novembro de 2026  
+**Última atualização (v1.2, correções pós-avaliação):** 11 de novembro de 2026  
 **Revisor:** campo não preenchido — nenhuma revisão de terceiro foi simulada.  
 **Moeda:** reais; nas demonstrações, em geral R\$ mil.  
 **Classificação:** material didático baseado em informação pública e dados sintéticos.
@@ -604,6 +605,61 @@ Legenda obrigatória: **[REALIZADO — evidência pública]** significa apenas i
 
 Os identificadores E-01 a E-04 apontam para fontes públicas, não para evidência de auditoria independente suficiente sobre a conta. Os itens planejados e simulados ficam explicitamente fora de qualquer conclusão factual.
 
+## Estrutura do arquivo didático: índice, convenção de códigos, versões, montagem e guarda
+
+*Seção incluída na v1.2 (11/11/2026), para atender ao roteiro do PT 230: criar índice, convenção de códigos, referências cruzadas, controle de versões e procedimentos de montagem e guarda.*
+
+> **Natureza:** as subseções A a C descrevem artefatos reais do pacote acadêmico, verificáveis no repositório; eles organizam o trabalho e **não** são evidência sobre a companhia. A subseção D é **Simulado para fins didáticos**: não existe arquivo final de auditoria real.
+
+### A. Índice do arquivo
+
+| Parte do arquivo | Localização no repositório | Conteúdo |
+|---|---|---|
+| Índice dos 27 papéis | `workpapers/INDEX.md` | Roteiro, tema e arquivo de cada PT |
+| Papéis de trabalho | `workpapers/PT-*.md` | PT-EC e PT-200 a PT-600 |
+| Matriz de cobertura das normas | `MATRIZ_NORMAS.md` | Norma → PT, versão consultada e cobertura |
+| Fontes públicas | `FONTES.md` | Endereço, data de acesso, documento, página e exercício |
+| Base sintética e registro de injeção | `data/` | 500.000 linhas e `injection_register.json` |
+| Cálculos, amostras e planilhas | `analysis/` | Materialidade, SRS de 10.000 itens, amostra dirigida, conciliações, programas |
+| Código de geração e análise | `scripts/` | Geração, análise, validação, montagem e PDF |
+| Dossiê consolidado | `Dossie_Auditoria_Direcional_2025.pdf` e `.md` | Montagem dos 27 PTs |
+| Verificação de integridade | `CHECKSUMS.sha256` | SHA-256 dos arquivos da versão fechada |
+
+### B. Convenção de códigos e referências cruzadas
+
+| Elemento | Padrão | Exemplo | Observação |
+|---|---|---|---|
+| Papel de trabalho | `PT-<norma>`; `PT-EC` para a Estrutura Conceitual | PT-530 | Um arquivo por papel |
+| Procedimento | `P<nn>`, ou `PUB-nn`, `PLN-nn`, `SIM-nn` quando o status vai no código | P05; PUB-01 | Os PTs foram redigidos com variações de rótulo; esta convenção as trata como equivalentes e vale para versões futuras |
+| Status do procedimento | Três rótulos obrigatórios | Realizado com evidência pública; Planejado por falta de acesso; Simulado para fins didáticos | Abreviados como REALIZADO, PLANEJADO e SIMULADO nos PTs mais curtos |
+| Evidência | `E-<nn>` ou `E<n>` | E-03 | Aponta para uma fonte da relação de fontes |
+| Fonte | `[n]` no PT; `S<n>` em `FONTES.md` | [3]; S2 | O número `[n]` é local de cada PT |
+| Registro sintético | `SYN-INV-`, `SYN-CON-`, `SYN-PRJ-`, `SYN-REG-` + número | SYN-INV-0003381 | Sempre sintético; nunca real |
+| Exceção inserida | Código em maiúsculas | TITLE_DOCUMENT_INCOMPLETE | Usado no registro de injeção e nos testes |
+| Referência cruzada | `PT-<norma>` (+ seção quando útil) | "ver PT-450, mapa de distorções" | Sempre no texto do PT de origem |
+
+### C. Controle de versões
+
+| Versão | Data | Mudança | PTs e arquivos afetados |
+|---|---|---|---|
+| v1.0 | 22/10/2026 | Versão inicial: 27 PTs, base sintética, planilhas, dossiê e PDF | Todos |
+| v1.1 | 09/11/2026 | Revisão do dimensionamento amostral após comentário docente: n = 10.000 com justificativa de detecção de eventos raros | PT-530, `analysis/`, planilhas, dossiê |
+| v1.2 | 11/11/2026 | Correções pós-avaliação: matrícula 242011273 nos 27 PTs e no PDF; correções na matriz de normas (SRS de 10.000; materialidade específica sobre estoques); inclusão de modelos e controles no PT-505, matriz de deficiências no PT-265 e esta seção no PT-230; PDF regenerado por `scripts/build_pdf.sh` | PT-230, PT-265, PT-505 e todos os PTs (identificação); `MATRIZ_NORMAS.md`; dossiê; PDF |
+
+**Mecanismo:** o histórico de commits do Git é a trilha de alterações e não deve ser reescrito; cada mudança relevante entra numa nova linha da tabela acima. Dossiê e PDF são regenerados a partir dos PTs por scripts (`assemble_dossier.py`, `build_pdf.sh`), nunca editados à mão.
+
+### D. Montagem e guarda do arquivo (simulado)
+
+| Etapa | Regra | Como se realiza neste pacote |
+|---|---|---|
+| 1. Fechamento | Depois de fechada, nenhuma versão é alterada sem nova linha na tabela C | Cada versão fechada corresponde a um commit/etiqueta no repositório |
+| 2. Montagem | Consolidar os papéis num único dossiê, com índice e referências cruzadas | `python3 scripts/assemble_dossier.py`, depois `python3 scripts/validate_workpapers.py` e `sh scripts/build_pdf.sh` |
+| 3. Integridade | Registrar o resumo criptográfico dos arquivos fechados | `sh scripts/make_checksums.sh` gera `CHECKSUMS.sha256`; a verificação é `sha256sum -c CHECKSUMS.sha256` |
+| 4. Guarda | Manter cópia íntegra em repositório controlado e acesso restrito a quem precisa | Repositório GitHub como guarda principal; fontes públicas obtidas pelos links de `FONTES.md` (PDFs baixados não são versionados) |
+| 5. Retenção | Prazo definido pela política de qualidade e pela regulamentação aplicáveis a trabalhos reais | **Não se aplica retenção regulatória**: não há trabalho contratado nem relatório emitido, apenas material acadêmico; o repositório permanece enquanto a disciplina o exigir |
+| 6. Confidencialidade | Proteger informações de clientes e de terceiros | Sem dados confidenciais: apenas informação pública e dados sintéticos rotulados |
+| 7. Revisão | Revisor identifica-se e data | Campo de revisão mantido em branco em todos os PTs; nenhuma revisão de terceiro foi simulada |
+
 ## Resultados, exceções e conclusão
 
 **Resultado do exame documental público:** CFC identifica a NBC TA 230 (R1) como vigente para o período. A DFP 4T25 V1 foi obtida e as páginas impressas 16–17, 21, 69 e 115–117 foram lidas. Elas sustentam os saldos, comparativos, PAA e opinião citados, inclusive o total de terrenos a incorporar de R\$5.678.238 mil; o saldo de R\$4.864.673 mil é o componente não circulante, e o comparativo correto de terrenos em 2024 é R\$4.587.823 mil. B3 confirma o ativo total e a identificação; CVM confirma protocolo e auditor cadastrado. Nenhum dado foi conciliado a registros internos. [3] [4] [6]
@@ -1015,6 +1071,46 @@ A NBC TA 265 define deficiência de controle interno em termos de desenho, imple
 | P12 | **Planejado por falta de acesso:** se forem identificadas deficiências significativas, redigir e comunicar tempestivamente por escrito à governança, incluindo descrição e possíveis efeitos; comunicar à administração conforme item 10, e documentar datas, destinatários e respostas. | Pendente e condicional à identificação de deficiência significativa. Nenhuma comunicação foi emitida ou recebida neste trabalho didático. |
 | P13 | **Simulado para fins didáticos:** considerar, sem afirmar ocorrência, cenário hipotético em que conciliações/validações essenciais de terrenos, receitas ou contingências não fossem executadas e não houvesse revisão compensatória. | Exercício de aplicação de critério: seria necessário verificar condição, causa, controles compensatórios, exposições e probabilidade/magnitude antes de classificar; se significativo, a comunicação observaria os itens 9–11. Não constitui achado, evidência, teste realizado ou afirmação de que a Companhia opera dessa forma. |
 
+## Matriz de deficiências: hipóteses de risco e constatações sustentadas por evidência
+
+*Seção incluída na v1.2 (11/11/2026), para atender ao roteiro do PT 265: matriz com condição, critério, causa, efeito e recomendação, distinguindo hipóteses de constatações.*
+
+**Regra de classificação.** Cada linha traz uma natureza explícita, em três níveis:
+
+- **Constatação sobre a Direcional:** exige evidência sobre controles reais (walkthrough, teste de controle, documentação interna). **Não há nenhuma**: a evidência disponível é exclusivamente pública.
+- **Constatação sobre dado sintético (C-DS):** resultado de teste reprodutível sobre a base sintética (scripts do repositório). É sustentada por evidência, mas **não é achado sobre a companhia**; aqui serve para ilustrar como a deficiência de um controle simulado seria descrita.
+- **Hipótese de risco (H):** condição que poderia existir, sem evidência; serve só para orientar procedimentos planejados. Não é deficiência nem constatação.
+
+Referências de materialidade (PT-320): global R\$ 99.147.262; execução R\$ 69.403.084; claramente trivial R\$ 4.957.363. São premissas didáticas.
+
+### Tabela A — Constatações sobre dado sintético (C-DS)
+
+Os critérios abaixo são as regras codificadas em `scripts/analyze_synthetic_inventory.py`; a norma contábil é citada pelo nome e seu texto não foi consultado neste trabalho.
+
+| Ref. | Condição (resultado do teste) | Critério | Causa | Efeito | Recomendação (se fosse controle real) | Natureza |
+|---|---|---|---|---|---|---|
+| C-DS1 | Título incompleto: 200 itens inseridos e 200 detectados (0 omitidos); a SRS de 10.000 itens encontrou 3 | Parcela de terreno com título documentado e data de registro preenchida (afirmação de direitos) | Inserida por construção (TITLE_DOCUMENT_INCOMPLETE). Em caso real, a causa dependeria de investigação | Valor contábil sintético de R\$ 2.740.766,94 com direito não evidenciado; abaixo do claramente trivial | Conciliar o cadastro de títulos ao razão antes do reconhecimento e bloquear contabilização sem registro | C-DS: sustentada por teste reproduzível |
+| C-DS2 | Valor realizável líquido menor que o contábil: 500 inseridos e 500 detectados; SRS: 15 | Estoque pelo menor entre custo e valor realizável líquido (NBC TG 16) | Inserida por construção (NRV_BELOW_BOOK) | Insuficiência real inserida de R\$ 1.191.323,15 (1,2% da materialidade global); projeção pela SRS de R\$ 1.487.455 (IC95% de R\$ 537.425,96 a R\$ 2.437.484,04, exploratório) | Revisão periódica do valor realizável líquido por projeto/unidade, com aprovação documentada | C-DS |
+| C-DS3 | Classificação circulante/não circulante em desacordo com o prazo de realização: 250 inseridos e 250 detectados; SRS: 4 | Classificação por prazo de realização na data-base (NBC TG 26); horizonte adotado: 31/12/2026 | Inserida por construção (CLASSIFICATION_MISMATCH) | Distorção de apresentação de R\$ 3.413.315,28 entre grupos; sem efeito no total da rubrica; abaixo do claramente trivial | Regra automática de classificação a partir da data de realização prevista, com revisão no fechamento | C-DS |
+| C-DS4 | Avaliação desatualizada (data anterior a 01/01/2023): 300 inseridos e 300 detectados; SRS: 8 | Avaliação do item dentro do prazo da política didática | Inserida por construção (VALUATION_STALE) | R\$ 4.143.453,97 de valor contábil com suporte de avaliação antigo; efeito monetário não mensurado | Calendário de reavaliação e relatório de itens vencidos | C-DS |
+| C-DS5 | Área inválida (área menor ou igual a zero): 150 inseridos e 150 detectados; **SRS: 0** | Área positiva e compatível com o objeto | Inserida por construção (AREA_INVALID) | R\$ 2.019.011,03 de valor contábil com dado cadastral inválido | Validação de campo obrigatório no cadastro. Observação: a SRS não os captou, como previsto (probabilidade de não detecção de 4,83%), o que mostra o limite da amostragem para eventos raros (PT-530) | C-DS |
+
+Em todas as cinco linhas, a comparação entre o registro de injeção e os testes na população mostra exatidão total (detectado = inserido, 0 omitidos, 0 inesperados).
+
+### Tabela B — Hipóteses de risco sobre a Direcional (H, não constatadas)
+
+| Ref. | Condição (hipotética, não observada) | Critério | Causa potencial | Efeito potencial | Recomendação (condicional) | Natureza e evidência necessária |
+|---|---|---|---|---|---|---|
+| H1 | Ausência de conciliação periódica entre subledger de terrenos/estoques e razão geral | Saldo de estoques igual à soma dos itens (Nota 5, R\$ 6.951.508 mil) | Falta de rotina ou dependência de planilhas | Saldo inexato ou incompleto na rubrica mais material | Instituir conciliação mensal com revisão e evidência de aprovação | **H** — exigiria razão, subledger e política interna (planejado, PT-330) |
+| H2 | Revisão insuficiente das estimativas de custo orçado e a incorrer, base do reconhecimento de receita ao longo do tempo | Estimativas razoáveis e revisadas (PT-540); receita é risco presumido (PT-240) | Orçamentos desatualizados ou viés | Receita e margem distorcidas no corte | Governança de revisão de orçamentos de obra, com reaprovação a cada marco | **H** — exigiria orçamentos, medições e atas |
+| H3 | Controles de provisão para contingências sem input tempestivo do jurídico | Provisão quando provável e mensurável; PAA do relatório público sobre contingências | Fluxo informal entre jurídico e contabilidade | Passivo subavaliado ou divulgação incompleta | Reunião e matriz formal de processos com probabilidade e valor | **H** — exigiria cartas de advogados e matriz de processos |
+| H4 | Lançamentos manuais sem segregação nem revisão | Burla de controles pela administração como risco presumido (PT-240) | Acesso amplo a perfis contábeis | Lançamentos indevidos no fechamento | Perfis segregados e revisão de lançamentos manuais próximos ao corte | **H** — exigiria logs do sistema e acesso a lançamentos |
+| H5 | Controles gerais de TI fracos (acessos, mudanças) no ERP do ciclo de estoques e receitas | Confiabilidade de dados e relatórios automatizados | Gestão de acessos informal | Dados-fonte não confiáveis para toda a rubrica | Revisão periódica de acessos e controle de mudanças | **H** — exigiria entendimento de TI e testes (PT-315, planejado) |
+
+**Significância (item 8 da NBC TA 265, conforme usado nos procedimentos acima):** não pode ser avaliada para H1–H5, pois exige conhecer a probabilidade e a magnitude em controles reais. Nada na Tabela B deve ser lido como deficiência, achado ou crítica à Direcional. Por sua vez, C-DS1 a C-DS5 não podem ser atribuídas à companhia: são resultados de testes sobre dados criados para este exercício.
+
+**Referências cruzadas:** PT-530 (testes e resultados da base), PT-450 (mapa de distorções sintéticas), PT-320 (materialidade), PT-315 (riscos e TI), PT-330 (respostas), PT-240 (fraude), PT-540 (estimativas), PT-501 (estoques e litígios).
+
 ## Evidências e referências cruzadas
 
 | Referência | Evidência / fonte | Localização e alcance |
@@ -1032,6 +1128,8 @@ A NBC TA 265 define deficiência de controle interno em termos de desenho, imple
 **Exceções:** limitação de acesso a informações internas e à evidência subjacente; a DFP pública integral foi obtida e as páginas relevantes foram examinadas. Nenhuma exceção de controle foi identificada, testada ou confirmada. A ausência de exceção observada em fontes públicas não significa ausência de deficiência.
 
 **Conclusão didática:** com evidência exclusivamente pública e incompleta, não é possível concluir se a Companhia tinha deficiência de controle interno, se alguma deficiência era significativa ou se houve necessidade de comunicação nos termos dos itens 9–11 da NBC TA 265. Os fatores descritos são hipóteses de risco para orientar procedimentos, e não constatações. A opinião sem ressalva e os PAAs atribuídos à DFP-base não fornecem, por si, conclusão sobre eficácia de controles nem alteram essa limitação. Para conclusão de auditoria seria necessário executar os procedimentos planejados, avaliar evidência suficiente e apropriada e documentar julgamento profissional.
+
+**Matriz de deficiências:** a seção correspondente separa constatações sobre dado sintético (C-DS1 a C-DS5, sustentadas por testes reprodutíveis, mas sem relação com a companhia) de hipóteses de risco (H1 a H5, sem evidência). Não há constatação sustentada por evidência sobre controles reais da Direcional.
 
 **Limitações expressas:** este trabalho não alega confirmação externa, entrevista, inspeção física, observação, walkthrough, inspeção de documentação interna, acesso a sistemas, teste de controle ou teste substantivo executado. Não se atribui achado, deficiência, distorção ou controle compensatório à DIRECIONAL ENGENHARIA S.A. A opinião da PwC e os números da DFP foram localizados na cópia pública examinada; isso não substitui testes de auditoria nem conciliação a registros internos.
 
@@ -1932,10 +2030,90 @@ A evidência pública consultada consiste em: (i) DFP CVM de 31/12/2025, versão
 | Comparação independente do ativo consolidado publicado pela CVM com a página B3 para 31/12/2025. | **Realizado com evidência pública** | Ambas as fontes exibem R\$ 13.219.635 mil para ativo total consolidado. É apenas consistência entre divulgações públicas, não confirmação externa independente obtida pelo auditor nem teste dos registros. [3] [4] |
 | Recalcular variação do total de terrenos e do ativo total entre 2024 e 2025 e proporções dos terrenos em relação aos estoques e ativo de 2025. | **Realizado com evidência pública** | Aumento do total de terrenos: R\$ 1.090.415 mil, aproximadamente 23,8%; aumento do ativo: R\$ 3.152.229 mil, aproximadamente 31,3%; terrenos/estoques: aproximadamente 81,7%; terrenos/ativo: aproximadamente 43,0%. Recalculo aritmético sem teste de exatidão do dado-fonte ou de avaliação. [3] |
 | Solicitar ao auditor/companhia razão, composição da população e materialidade; reconciliar a listagem integral de terrenos a incorporar com demonstrações e registros consolidados. | **Planejado por falta de acesso** | Não executado: não houve acesso à administração, ao auditor, ao razão, ao balancete ou a controles internos. Sem esse suporte, não foi possível determinar população, materialidade ou amostra. |
-| Para itens selecionados após a etapa anterior, desenhar e enviar confirmações positivas a vendedores/alienantes e, conforme o caso, instituições financeiras, agentes custodiante/de garantias ou contrapartes, pedindo confirmação de saldos, condições contratuais, pagamentos, garantias, ônus, direitos e compromissos diretamente ao auditor. | **Planejado por falta de acesso** | Nenhuma solicitação foi preparada ou enviada; nenhum terceiro foi contatado e nenhuma resposta foi recebida. A escolha da parte confirmadora e dos dados a confirmar dependeria da natureza do saldo e de fontes externas apropriadas, nos termos do item 7. |
+| Para itens selecionados após a etapa anterior, desenhar e enviar confirmações positivas a vendedores/alienantes e, conforme o caso, instituições financeiras, agentes custodiante/de garantias ou contrapartes, pedindo confirmação de saldos, condições contratuais, pagamentos, garantias, ônus, direitos e compromissos diretamente ao auditor. | **Planejado por falta de acesso** | Nenhuma solicitação real foi preparada ou enviada (os modelos didáticos M-1 a M-5, adiante, são simulações e não solicitações); nenhum terceiro foi contatado e nenhuma resposta foi recebida. A escolha da parte confirmadora e dos dados a confirmar dependeria da natureza do saldo e de fontes externas apropriadas, nos termos do item 7. |
 | Controlar expedição, endereçamento e devolução, autenticar cada resposta, enviar segundo pedido quando cabível e investigar toda diferença. Para não respostas, planejar procedimentos alternativos como inspeção de títulos/contratos, comprovantes de liquidação subsequente, extratos e registros externos pertinentes. | **Planejado por falta de acesso** | Não executado por inexistência de solicitações e acesso interno. Não houve avaliação de resposta não recebida, de exceção ou da confiabilidade de resposta. Itens 7, 10–14 e 16. |
 | Exercício de treinamento: em uma confirmação hipotética de saldo de terreno, tratar diferença entre resposta e razão como exceção a investigar; comparar resposta obtida diretamente e documento de titularidade/ônus; tratar ausência de resposta como não resposta, não como concordância. | **Simulado para fins didáticos** | Cenário fictício, sem identificação de contraparte, valor, resposta, divergência real ou documento obtido. Demonstra aplicação dos itens 6, 10–14 e A11–A22; não constitui achado nem evidência sobre a companhia. |
 | Procedimento hipotético diante de recusa da administração: indagar razões, avaliar validade/razoabilidade, reavaliar riscos e considerar procedimentos alternativos; avaliar implicações para auditoria e comunicação. | **Simulado para fins didáticos** | Não houve recusa real ou contato com a administração. Cenário ilustrativo dos itens 8–9 e A8–A10. |
+
+## Modelos e controles de confirmação (simulados para fins didáticos)
+
+*Seção incluída na v1.2 (11/11/2026), para atender ao roteiro do PT 505: preparar modelos, controle de circularização, tratamento de diferenças e procedimentos alternativos.*
+
+> **Natureza e limites:** todo o conteúdo desta seção é **Simulado para fins didáticos**. Nenhum modelo foi enviado, nenhuma contraparte foi contatada e nenhuma resposta existe. As contrapartes (CONTRAP-SIM-nn) são fictícias; os itens (SYN-INV/SYN-CON) são registros sintéticos da base de 500.000 linhas e **não** representam terrenos, contratos ou vendedores reais da Direcional. As respostas do controle M-3 são hipóteses de treinamento: a base não contém respostas de confirmação e, para esses itens, não contém diferença alguma.
+
+### M-1 — Modelo de carta de confirmação positiva (didático, não enviado)
+
+```text
+MODELO DIDÁTICO — NÃO ENVIADO — CONTRAPARTE E DADOS SINTÉTICOS
+
+[Papel timbrado da companhia — preparado pela administração com os dados definidos pelo auditor]
+Local e data: [DD/MM/AAAA]
+
+À [CONTRAP-SIM-nn — alienante do imóvel]
+Assunto: Confirmação de informações em 31/12/2025 — resposta direta ao auditor independente
+
+Para fins da auditoria das demonstrações contábeis da [ENTIDADE] em 31/12/2025,
+solicitamos que confirmem DIRETAMENTE ao auditor, no endereço indicado abaixo, as
+informações a seguir, constantes dos registros da companhia:
+
+ 1. Contrato / imóvel:            [SYN-CON-nnnnnnn] / [SYN-REG-nnnnnnn]
+ 2. Valor da aquisição:           [valor em reais: ______]
+ 3. Valores pagos até a data-base:[valor em reais: ______]
+ 4. Saldo a pagar na data-base:   [valor em reais: ______]
+ 5. Existência de ônus, garantias ou restrições sobre o imóvel:  [ ] sim  [ ] não
+    Se sim, descrever: ____________________________________________
+ 6. Outras condições relevantes (opção de recompra, permuta, cláusulas): ______
+
+[ ] As informações acima estão corretas.
+[ ] Há diferenças, descritas a seguir: ______________________________________
+
+Nome, cargo, assinatura, data e carimbo do confirmante: ________________________
+
+Responder diretamente a: [nome do auditor — endereço postal e eletrônico do auditor]
+```
+
+**Pontos de controle do modelo:** a administração autoriza e fornece os dados, mas o auditor define o que confirmar, escolhe o confirmante, expede e recebe a resposta sem intermediação da companhia (item 6 da NBC TA 505, conforme usado nos procedimentos acima). Os campos de valor ficam em branco ou preenchidos pela companhia conforme a natureza do saldo, e o campo de resposta exige identificação do confirmante para permitir a avaliação de confiabilidade (itens 10–14). O modelo **não** contém números reais, nome de vendedor real nem endereço de auditor real.
+
+### M-2 — Forma da confirmação: por que positiva e não negativa
+
+A confirmação negativa só poderia ser considerada como procedimento isolado se o risco avaliado fosse baixo, houvesse muitos saldos pequenos e homogêneos, a taxa esperada de exceção fosse muito baixa e não houvesse razão para crer que os respondentes ignorariam a solicitação. Esses requisitos não se sustentam aqui: o risco sobre direitos e avaliação de terrenos é tratado como elevado no PT-315; a base sintética tem taxa inserida de exceção de 0,28% (1.400 de 500.000), nada desprezível frente ao nível de risco; e a confirmação serve para obter evidência externa sobre titularidade e ônus, o que exige resposta efetiva. A conclusão é usar a **forma positiva (M-1)** nos itens selecionados; a negativa poderia, no máximo, complementar a positiva em itens de baixo valor, nunca substituí-la. Não se trata de "não aplicável": é decisão de desenho fundamentada.
+
+### M-3 — Controle de circularização (simulado)
+
+Seleção didática de 6 itens da amostra dirigida de maior valor do PT-530 (`analysis/amostra_direcionada_top200.csv`), para ilustrar os estados possíveis do controle. Prazos são relativos (D+n dias após a expedição simulada); não há datas reais de envio.
+
+| Ref. | Contraparte (fictícia) | Item sintético (posição na amostra dirigida) | Valor contábil sintético | Expedição / 2º pedido | Resposta hipotética | Diferença hipotética (R\$) | Situação e tratamento |
+|---|---|---|---|---|---|---|---|
+| CONF-01 | CONTRAP-SIM-01 | SYN-INV-0003381 / SYN-CON-0003381 (TERRENOS_A_INCORPORAR, SC; posição 1 de 200) | R\$ 113.675,00 | D+0 / — | Concorda (D+6) | 0,00 | Concluído sem diferença; arquivar resposta e comparar assinatura/carimbo ao cadastro do confirmante. |
+| CONF-02 | CONTRAP-SIM-02 | SYN-INV-0483606 / SYN-CON-0483606 (IMOVEIS_EM_CONSTRUCAO, PE; posição 2 de 200) | R\$ 109.290,97 | D+0 / — | Discorda (D+9) | 4.500,00 | Diferença hipotética por parcela paga em trânsito perto da data-base: reconciliar ao comprovante de pagamento e testar o corte; se o registro da companhia estiver errado → M-4, linha 2. |
+| CONF-03 | CONTRAP-SIM-03 | SYN-INV-0012075 / SYN-CON-0012075 (TERRENOS_A_INCORPORAR, RJ; posição 3 de 200) | R\$ 109.043,06 | D+0 / D+10 | Sem resposta | n/d | Não resposta não é concordância: aplicar M-5 (procedimentos alternativos); manter item aberto até evidência alternativa suficiente. |
+| CONF-04 | CONTRAP-SIM-04 | SYN-INV-0274726 / SYN-CON-0274726 (TERRENOS_A_INCORPORAR, RJ; posição 50 de 200) | R\$ 87.388,40 | D+0 / — | Concorda com ressalva (D+8) | n/d | Confirmante informa ônus não constante do cadastro: investigar existência de garantia não registrada/divulgada → M-4, linha 5; avaliar divulgação (PT-501). |
+| CONF-05 | CONTRAP-SIM-05 | SYN-INV-0066556 / SYN-CON-0066556 (TERRENOS_A_INCORPORAR, GO; posição 100 de 200) | R\$ 78.901,60 | D+0 / — | Resposta por canal não solicitado (D+5) | n/d | Resposta não veio diretamente ao auditor (endereço eletrônico diferente do cadastro): dúvida sobre confiabilidade; exigir nova resposta direta ou prova alternativa (itens 10–14). |
+| CONF-06 | CONTRAP-SIM-06 | SYN-INV-0487304 / SYN-CON-0487304 (IMOVEIS_EM_CONSTRUCAO, CE; posição 200 de 200) | R\$ 73.198,75 | Não expedida | — | — | Item reservado para 2º lote; sem expedição não há resposta nem conclusão. Mostra que o controle precisa registrar itens selecionados e não expedidos. |
+
+**Totais do controle:** 6 itens selecionados; valor contábil sintético somado de R\$ 571.497,78, equivalente a 0.0082% dos R\$ 6.951.508.000,00 da rubrica. Essa cobertura ínfima mostra que o controle é **ilustrativo de método**, não amostra suficiente. Nenhuma situação acima é achado sobre a companhia.
+
+### M-4 — Quadro de tratamento de diferenças (simulado)
+
+| Linha | Natureza da diferença | Como se identifica | Investigação | Tratamento e destino |
+|---|---|---|---|---|
+| 1 | Diferença de corte ou de tempo (pagamento ou entrega em trânsito) | Resposta diverge do razão, mas a diferença some com comprovante datado | Obter comprovante de pagamento e documento de entrega; testar a data de registro | Não é distorção se explicada; se o registro estiver no período errado, tratar como distorção de corte → PT-450 |
+| 2 | Erro de registro da companhia | Documento-fonte sustenta o valor do confirmante | Reperformance do lançamento; verificar se o erro é isolado ou sistêmico | Distorção factual → mapa do PT-450; reavaliar riscos (PT-315) e extensão dos testes (PT-330) |
+| 3 | Erro do confirmante | Documentos da companhia sustentam o razão; confirmante corrige a resposta | Pedir resposta retificada diretamente | Sem distorção; registrar a retificação como evidência |
+| 4 | Indício de fraude ou irregularidade | Padrão incomum (assinatura divergente, canal inesperado, conluio aparente) | Ceticismo reforçado; evidência independente adicional | Considerar PT-240; comunicar à administração e à governança conforme PT-260; não concluir sem evidência |
+| 5 | Informação não registrada (ônus, garantia ou passivo omitido) | Confirmante informa condição ausente do cadastro | Obter contrato/matrícula atualizada; avaliar completude | Avaliar ajuste ou divulgação → PT-450 e PT-501; reavaliar completude |
+| 6 | Não resposta | Sem retorno após 2º pedido | Aplicar M-5 | Concluir apenas com evidência alternativa suficiente; não tratar como concordância |
+
+### M-5 — Procedimentos alternativos para não resposta ou resposta não confiável
+
+| Informação a confirmar | Procedimento alternativo | Evidência esperada | Limitação neste trabalho |
+|---|---|---|---|
+| Titularidade e ônus do terreno | Inspecionar escritura e matrícula atualizada do imóvel | Certidão de matrícula com ônus e proprietário | **Planejado por falta de acesso**: não há documento real |
+| Saldo a pagar ao alienante | Examinar contrato, cronograma de pagamento e comprovantes de liquidação subsequentes | Contrato, extratos e recibos | **Planejado por falta de acesso** |
+| Existência e valor da aquisição | Conciliar contrato, escritura e registro contábil do item | Documentos-fonte do item | **Planejado por falta de acesso** |
+| Integridade documental da população (equivalente sintético) | Teste sobre a base sintética: título documentado e data de registro preenchida | Resultado do PT-530: TITLE_DOCUMENT_INCOMPLETE com 200 inseridos e 200 detectados; a SRS de 10.000 itens encontrou 3 | **Simulado para fins didáticos**: vale só para dados sintéticos e não prova nada sobre a Direcional |
+
+**Referências cruzadas:** PT-530 (amostra dirigida e resultados), PT-450 (mapa de distorções), PT-500 (confiabilidade da evidência), PT-501 (estoques e litígios), PT-240 e PT-260 (indícios e comunicação).
 
 ## Referências cruzadas e arquivo de evidências
 

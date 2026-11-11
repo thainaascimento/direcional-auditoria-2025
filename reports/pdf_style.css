@@ -11,3 +11,6 @@ code{font-family:"DejaVu Sans Mono",monospace;font-size:8pt;background:#f3f4f6}
 p{margin:5px 0}
 li{margin:2px 0}
 blockquote{border-left:3px solid #c9a227;background:#fbf7e6;margin:8px 0;padding:4px 10px}
+
+thead{display:table-header-group}
+h3+table,h4+table{page-break-before:auto}
