@@ -28,6 +28,11 @@ def style(ws):
         for c in row:
             c.alignment = Alignment(vertical="top", wrap_text=True)
 
+def format_brl(value: float) -> str:
+    """Format a numeric amount using Brazilian currency separators."""
+    return f"R${value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
 def main():
     results = json.loads((ANALYSIS / "PT530_resultados.json").read_text(encoding="utf-8"))
     wb = Workbook()
@@ -128,7 +133,11 @@ def main():
     effects = {
         "TITLE_DOCUMENT_INCOMPLETE": "Direitos/evidência insuficientes no registro sintético; não é estimativa de perda.",
         "AREA_INVALID": "A área do registro sintético é zero; efeito monetário não estimado sem método de mensuração.",
-        "NRV_BELOW_BOOK": "Shortfall sintético agregado conhecido: R$1.026.809,57; cenário didático, não perda real.",
+        "NRV_BELOW_BOOK": (
+            "Shortfall sintético agregado conhecido: "
+            f"{format_brl(results['actual_injected_synthetic_nrv_shortfall_brl'])}; "
+            "cenário didático, não perda real."
+        ),
         "CLASSIFICATION_MISMATCH": "Erro sintético entre classificação e data de lançamento; sem inferência sobre apresentação da companhia.",
         "VALUATION_STALE": "Data de avaliação sintética desatualizada; exposição a estimativa, sem distorção monetária medida.",
     }
